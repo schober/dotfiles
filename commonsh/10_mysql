@@ -1,0 +1,4 @@
+#! /bin/sh
+
+concat_path "/usr/local/mysql/bin"
+concat_manpath "/usr/local/mysql/man"
