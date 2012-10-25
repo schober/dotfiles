@@ -1,0 +1,5 @@
+#! /bin/sh
+
+concat_path "/sw/bin"
+concat_path "/sw/sbin"
+concat_manpath "/sw/share/man"

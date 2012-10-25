@@ -1,0 +1,3 @@
+#! /bin/sh
+
+concat_path "${HOME}/.glassfishv3/bin"
