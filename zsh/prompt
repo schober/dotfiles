@@ -1,31 +1,127 @@
 # prompt
-RESETCOLOR=''
-HOSTCOLOR=''
-PATHCOLOR=''
-BOLDERRORCOLOR=''
-BLACKCOLOR=''
 
-case "${TERM}" in
-	dumb)
-	;;
-	*)
-		if command -v tput >/dev/null 2>&1 && [ `tput colors` != -1 ] ; then
-			RESETCOLOR=$'%{\e[00;00m%}'
-			if [ -z "${SSH_TTY}" ] ; then
-				HOSTCOLOR=$'%{\e[01;32m%}'
+prompt_command() {
+	# [user host MM/DD HH:MM /path/to/us]
+	# $ *
+	local RETURN_CODE="$?"
+	local ASCII_RESET=$'%{\e[0m%}'
+	local ASCII_BOLD=$'%{\e[1m%}'
+	local USER_COLOR=$'%{\e[1;33m%}'
+	local PROMPT_COLOR=$'%{\e[1;32m%}'
+	if [[ ${EUID} == 0 ]] ; then
+		PROMPT_COLOR=$'%{\e[1;31m%}'
+	fi
+	local HOST_COLOR=$'%{\e[01;32m%}'
+	HOST_COLOR=''
+	local DATE_COLOR=$'%{\e[1;31m%}'
+	local TIME_COLOR=$'%{\e[1;34m%}'
+	local CYAN_COLOR=$'%{\e[1;36m%}'
+	local PINK_COLOR=$'%{\e[1;35m%}'
+
+	# defaults
+	local KLANGE_USE_GIT=false
+	local KLANGE_USE_SVN=false
+	local KLANGE_USE_HG=false
+	local KLANGE_EXPAND_GIT=true
+
+	# user and host
+	local PROMPT_PREFIX=""
+	local USER_HOST=${USER_COLOR}$'%n '${HOST_COLOR}$'%m '
+	PROMPT_PREFIX=${PROMPT_PREFIX}${USER_HOST}
+	# Paths
+	local CURRENT_PATH=$'%45<...<%~'
+#	if [ -e ~/bin/shorten_pwd ] ; then
+#		CURRENT_PATH=`~/bin/shorten_pwd`
+#	fi
+	if [ "$WINDOW" != "" ] ; then
+		PROMPT_PREFIX=${PROMPT_PREFIX}${PINK_COLOR}$'%'${WINDOW}$' '
+	fi
+	local DATE_STRING=${DATE_COLOR}$'%D{%m/%d} '${TIME_COLOR}$'%D{%H:%M:%S} '
+	PROMPT_PREFIX=${PROMPT_PREFIX}${DATE_STRING}
+	# Screen window number
+	# Return code
+	if [[ $RETURN_CODE != 0 ]] ; then
+		PROMPT_PREFIX=${PROMPT_PREFIX}${DATE_COLOR}${RETURN_CODE}${ASCII_RESET}$' ' # do nothing
+	fi
+	# Title bar
+	local TITLEBAR=""
+	case $TERM in
+		xterm*|*rxvt*|cygwin|interix|Eterm|mlterm|kterm|aterm|putty*)
+			if [ "${STY}" ] ; then
+				TITLEBAR=$'%n@%m:'${CURRENT_PATH}
 			else
-				HOSTCOLOR=$'%{\e[01;36m%}'
+				TITLEBAR=$'\e]1;%n@%m:$CURRENT_PATH\007\e]2;%n@%m:$CURRENT_PATH\007'
 			fi
-			PATHCOLOR=$'%{\e[01;34m%}'
-			ERRORCOLOR=$'%{\e[00;31m%}'
-			BOLDERRORCOLOR=$'%{\e[01;31m%}'
-			CLOCKCOLOR=$'%{\e[01;33m%}'
-			JOBCOLOR=$'%{\e[00;36m%}'
-			BLACKCOLOR=$'%{\e[00;30m%}'
-		fi
 		;;
-esac
-
-PROMPT=${RESETCOLOR}${HOSTCOLOR}$'%n@%m'${BLACKCOLOR}':'${PATHCOLOR}$'%45<...<%~ %(?..'${BOLDERRORCOLOR}$')%(!.#.$) '${RESETCOLOR}
-
-RPROMPT=${RESETCOLOR}$'%1(j.'${JOBCOLOR}$'[%j].)%(?..'${ERRORCOLOR}$'[%?])'${CLOCKCOLOR}$'[%t]'${RESETCOLOR}
+		screen*)
+			TITLEBAR=$'\ek%n@%m:$CURRENT_PATH\e\134'
+		;;
+	esac
+	# Git support
+	if [ $KLANGE_USE_GIT == true ]; then
+		local GIT_STATUS="$(git status 2>/dev/null)"
+		echo $GIT_STATUS
+		if [[ $GIT_STATUS != "" ]] ; then
+			local REFS=" $(git symbolic-ref HEAD 2>/dev/null | sed 's/.*\///')"
+			REFS="${REFS#refs/heads/}"
+			if [[ `echo $GIT_STATUS | grep "modified:"` != "" ]] ; then
+				REFS="$REFS$ASCII_RESET ${PINK_COLOR}m" # Modified
+				if [ $KLANGE_EXPAND_GIT == true ]; then
+					REFS="${REFS}odified"
+				fi
+			elif [[ `echo $GIT_STATUS | grep "renamed:"` != "" ]] ; then
+				REFS="$REFS$ASCII_RESET ${PINK_COLOR}m" # Modified as well
+				if [ $KLANGE_EXPAND_GIT == true ]; then
+					REFS="${REFS}odified"
+				fi
+			fi
+			if [[ `echo $GIT_STATUS | grep "ahead of"` != "" ]] ; then
+				REFS="$REFS$ASCII_RESET ${CYAN_COLOR}s" # Staged
+				if [ $KLANGE_EXPAND_GIT == true ]; then
+					REFS="${REFS}taged"
+				fi
+			fi 
+			if [ $KLANGE_EXPAND_GIT == true ]; then
+				local COMMIT=`git show | head -1 | sed 's/commit //'`
+				REFS="$REFS $TIME_COLOR[$ASCII_RESET$COMMIT$TIME_COLOR]"
+				if [[ `echo $GIT_STATUS | grep "Untracked"` != "" ]] ; then
+					REFS="$REFS$DATE_COLOR untracked files"
+				fi
+				if [[ `echo $GIT_STATUS | grep "new file"` != "" ]] ; then
+					REFS="$REFS$HOST_COLOR new files"
+				fi
+			fi
+			PROMPT_PREFIX=${PROMPT_PREFIX}${HOST_COLOR}$'git'${USER_COLOR}${REFS}${ASCII_RESET}$' '
+		fi
+	fi
+	#
+	# SVN support
+	if [ $KLANGE_USE_SVN == true ]; then
+		if [ -e .svn ] ; then
+			local SVN_STATUS=`svn info 2>/dev/null`
+			if [[ $SVN_STATUS != "" ]] ; then
+				local REFS=" $(svn info | grep "Repository Root" | sed 's/.*\///')"
+				if [[ `svn status | sed 's/ .*//' | grep M` != "" ]] ; then
+					REFS="$REFS$ASCII_RESET ${PINK_COLOR}m" # Modified
+				fi
+				PROMPT_PREFIX=${PROMPT_PREFIX}${HOST_COLOR}$'svn'${USER_COLOR}${REFS}${ASCII_RESET}$' '
+			fi
+		fi
+	fi
+	#
+	# Mercurial
+	if [ $KLANGE_USE_HG == true ]; then
+		if [ -e .hg ] ; then
+			local REFS=" $(hg branch 2>/dev/null)"
+			if [[ `hg status | sed 's/ .*//' | grep 'A'` != "" ]] ; then
+				REFS="$REFS$ASCII_RESET ${PINK_COLOR}m" # modified
+			fi
+			PROMPT_PREFIX=${PROMPT_PREFIX}${HOST_COLOR}$'hg'${USER_COLOR}${REFS}${ASCII_RESET}$' '
+		fi
+	fi
+	local FINAL_PATH=${ASCII_RESET}${CURRENT_PATH}
+	PROMPT_PREFIX=${PROMPT_PREFIX}${FINAL_PATH}
+	# And we're done
+	PROMPT=${ASCII_BOLD}${PROMPT_PREFIX}${ASCII_RESET}$'\n'${PROMPT_COLOR}$'%(!.#.$)'${ASCII_RESET}$' '
+}
+prompt_command
