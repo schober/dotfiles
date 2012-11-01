@@ -26,7 +26,7 @@ local DATE_COLOR=$'%{\e[1;31m%}'
 local TIME_COLOR=$'%{\e[1;34m%}'
 local CYAN_COLOR=$'%{\e[1;36m%}'
 local PINK_COLOR=$'%{\e[1;35m%}'
-local ERROR_COLOR=$'%{\e[1;31m%}'
+local ERROR_COLOR=$'%{\e[0;31m%}'
 
 # Formatting
 local LBR="${ASCII_RESET}${ASCII_BOLD}["
