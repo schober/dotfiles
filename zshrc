@@ -1,6 +1,5 @@
+#! /bin/zsh
 # .zshrc
-# Current author: David Majnemer
-# Original author: Saleem Abdulrasool <compnerd@compnerd.org>
 # vim:set nowrap:
 
 autoload compinit; compinit -d "${HOME}/.zsh/.zcompdump-${HOST}"
@@ -34,14 +33,14 @@ if [ -d "${HOME}/work" ] ; then
 	done
 fi
 
-# common shell utils
+# common shell setup
 if [ -d "${HOME}/.commonsh" ] ; then
 	for file in "${HOME}"/.commonsh/*(N.x:t) ; do
 		. "${HOME}/.commonsh/${file}"
 	done
 fi
 
-# extras
+# zsh setup
 if [ -d "${HOME}/.zsh" ] ; then
 	for file in "${HOME}"/.zsh/*(N.x:t) ; do
 		. "${HOME}/.zsh/${file}"

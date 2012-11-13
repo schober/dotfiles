@@ -91,9 +91,15 @@ if command -v ack-grep >/dev/null 2>&1 ; then
 	alias ack=ack-grep
 fi
 
-mps () { ps -Aww | grep -E "[0-9]{2} [-_/\.\(\)\\ a-zA-Z0-9]*$1[-_/\.\(\)\\ a-zA-Z0-9]*" --color=NEVER }
-crc32 () { cksum -o3 "$@" | perl -wane 'printf "%s %08x\n", $F[2], $F[0]' }
-rgrep () { grep -R "$*" . }
+mps () {
+	ps -Aww | grep -E "[0-9]{2} [-_/\.\(\)\\ a-zA-Z0-9]*$1[-_/\.\(\)\\ a-zA-Z0-9]*" --color=NEVER
+}
+crc32 () {
+	cksum -o3 "$@" | perl -wane 'printf "%s %08x\n", $F[2], $F[0]'
+}
+rgrep () {
+	grep -R "$*" .
+}
 
 alias rm='rm -i'
 alias df='df -h'

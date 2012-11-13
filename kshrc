@@ -1,11 +1,16 @@
-if [ -d "${HOME}/.commonsh" ] ; then
-    for file in "${HOME}"/.commonsh/* ; do
+#! /bin/ksh
+# .kshrc
+
+# ksh setup
+if [ -d "${HOME}/.ksh" ] ; then
+    for file in "${HOME}"/.ksh/* ; do
         . "${file}"
     done
 fi
 
-if [ -d "${HOME}/.ksh" ] ; then
-    for file in "${HOME}"/.ksh/* ; do
+# common shell setup
+if [ -d "${HOME}/.commonsh" ] ; then
+    for file in "${HOME}"/.commonsh/* ; do
         . "${file}"
     done
 fi
