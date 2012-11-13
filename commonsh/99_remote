@@ -1,0 +1,12 @@
+#! /bin/sh
+
+# Wrap all remote sessions in a screen. We don't
+# want remote sessions dying when the connection drops.
+if [ -n "${SSH_CONNECTION}" ]; then
+	if [ -z "${STY}" ]; then
+		exec screen
+	else
+		# Screen env setup
+		export TERM=screen-256color
+	fi
+fi
