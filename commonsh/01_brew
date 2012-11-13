@@ -1,3 +1,4 @@
-# Move /usr/local/bin up in the path, so that anything installed there by brew gets launched over system defaults
+#! /bin/sh
 
+# Move /usr/local/bin up in the path, so that anything installed there by brew gets launched over system defaults
 concat_path /usr/local/bin
