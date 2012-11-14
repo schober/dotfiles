@@ -4,7 +4,7 @@
 # want remote sessions dying when the connection drops.
 if [ -n "${SSH_CONNECTION}" ]; then
 	if [ -z "${STY}" ]; then
-		exec screen
+		exec screen -R
 	else
 		# Screen env setup
 		export TERM=screen-256color
