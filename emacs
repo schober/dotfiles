@@ -5,11 +5,13 @@
 (cond
   ((>= emacs-major-version 24)
    (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-   (load-theme 'zenburn t))
+   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/solarized")
+   (load-theme 'solarized-dark t))
   ((= emacs-major-version 23)
    (add-to-list 'load-path "~/.emacs.d/themes/")
+   (require 'color-theme-solarized)
    (require 'color-theme-zenburn)
-   (color-theme-zenburn)))
+   (color-theme-solarized-dark)))
 
 ;; Set up slime
 (when (file-exists-p "~/.slime")
@@ -26,4 +28,23 @@
 ;; We much prefer whole line kills
 (setq kill-whole-line t)
 
+;; No useless splash screen
 (setq inhibit-splash-screen t)
+
+;; Set language-specific features
+(setq c-default-style "linux"
+      c-basic-offset 4)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(tab-width 4)
+ '(custom-safe-themes (quote ("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
