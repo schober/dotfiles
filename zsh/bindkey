@@ -32,6 +32,8 @@ case $TERM in
 		bindkey '\M-B\M-^H' backward-kill-word
 		bindkey '\M-^H' backward-kill-word
 		bindkey '\M-C\M-?' backward-kill-word
+		bindkey '\e?' backward-kill-word
+		bindkey -M emacs '\e[3;5~' kill-word
 	;;
 	mlterm|kterm)
 		bindkey '\e[H' beginning-of-line
