@@ -98,7 +98,7 @@ crc32 () {
 	cksum -o3 "$@" | perl -wane 'printf "%s %08x\n", $F[2], $F[0]'
 }
 rgrep () {
-	grep -R "$*" .
+	grep -R --color=always "$*" .
 }
 
 alias rm='rm -i'
