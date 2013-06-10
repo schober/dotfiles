@@ -1,3 +1,4 @@
+#! /bin/emacs
 ;; Emacs config file (~/.emacs)
 ;; Configuring emacs is hard!
 
@@ -6,12 +7,25 @@
   ((>= emacs-major-version 24)
    (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
    (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/solarized")
-   (load-theme 'solarized-dark t))
+   (load-theme 'solarized-dark nil))
   ((= emacs-major-version 23)
    (add-to-list 'load-path "~/.emacs.d/themes/")
    (require 'color-theme-solarized)
    (require 'color-theme-zenburn)
    (color-theme-solarized-dark)))
+
+;; Put backup buffers somewhere NOT annoying
+(defconst emacs-tmp-dir
+  (format "/%s/%s-%s/" temporary-file-directory "emacs" (user-uid)))
+
+(setq backup-directory-alist
+  `((".*" . ,emacs-tmp-dir)))
+(setq auto-save-file-name-transforms
+  `((".*" ,emacs-tmp-dir t)))
+(setq auto-save-list-file-prefix
+  emacs-tmp-dir)
+
+;; Re-open previously open files (fuck yeah transparent persistence)
 
 ;; Set up slime
 (when (file-exists-p "~/.slime")
