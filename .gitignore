@@ -6,3 +6,4 @@ answerback.Darwin
 *_local
 *#*#
 *.#*
+emacs.d/session.*
