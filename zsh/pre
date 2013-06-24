@@ -5,7 +5,8 @@ precmd ()
 {
 	local termtitle
 
-	termtitle=`print -P "%n@${HOST}[%l]"`
+#	termtitle=`print -P "%n@${HOST}[%l]"`
+	termtitle=`print -P "[%l]"`
 	title zsh "$termtitle"
 	update_prompt
 }
@@ -19,6 +20,7 @@ preexec ()
 
 	# Prepend this string to the title.
 	termtitle=`print -P "%n@${HOST}[%l]:"`
+	termtitle=""
 
 	case $cmd[1] in
 		fg)

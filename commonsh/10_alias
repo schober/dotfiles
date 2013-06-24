@@ -101,6 +101,16 @@ rgrep () {
 	grep -R --color=always "$*" .
 }
 
+# "WTF is going on (with my machine)"
+wtfigo () {
+	case $(uname) in
+		Linux)
+			watch vmstat -S M
+		;;
+		# TODO: Darwin
+	esac
+}
+
 alias rm='rm -i'
 alias df='df -h'
 alias du='du -h'
