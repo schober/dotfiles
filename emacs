@@ -37,6 +37,9 @@
 (setq global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
 
+;; Column numbers too!
+(setq column-number-mode t)
+
 ;; We much prefer whole line kills
 (setq kill-whole-line t)
 
