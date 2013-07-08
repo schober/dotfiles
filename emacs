@@ -5,11 +5,11 @@
 ;; Load themes, default to zenburn
 (cond
   ((>= emacs-major-version 24)
-   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
    (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/solarized")
    (load-theme 'solarized-dark t))
   ((= emacs-major-version 23)
-   (add-to-list 'load-path "~/.emacs.d/themes/")
+   (add-to-list 'load-path "~/.emacs.d/themes")
    (require 'color-theme-solarized)
    (require 'color-theme-zenburn)
    (color-theme-solarized-dark)))
@@ -25,13 +25,17 @@
 (setq auto-save-list-file-prefix
   emacs-tmp-dir)
 
+;; lisp-lib
+(when (file-exists-p "~/.emacs.d/lisp-lib")
+  (add-to-list 'load-path "~/.emacs.d/lisp-lib")
+  (require 'lisp-lib))
+
 ;; Set up slime
 (when (file-exists-p "~/.slime")
-  (progn
-    (add-to-list 'load-path "~/.slime")
-    (setq inferior-lisp-program "sbcl")
-    (require 'slime)
-    (slime-setup '(slime-repl))))
+  (add-to-list 'load-path "~/.slime")
+  (setq inferior-lisp-program "sbcl")
+  (require 'slime)
+  (slime-setup '(slime-repl slime-fancy slime-asdf)))
 
 ;; Enable syntax highlighting
 (setq global-font-lock-mode t)
