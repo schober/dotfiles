@@ -25,11 +25,6 @@
 (setq auto-save-list-file-prefix
   emacs-tmp-dir)
 
-;; lisp-lib
-(when (file-exists-p "~/.emacs.d/lisp-lib")
-  (add-to-list 'load-path "~/.emacs.d/lisp-lib")
-  (require 'lisp-lib))
-
 ;; Set up slime
 (when (file-exists-p "~/.slime")
   (add-to-list 'load-path "~/.slime")
