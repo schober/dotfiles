@@ -41,3 +41,6 @@
 	safecrlf = true
 [push]
 	default = matching
+[user]
+	name = Markus Schober
+	email = markus.e.schober@gmail.com
