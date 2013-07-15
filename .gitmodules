@@ -7,3 +7,6 @@
 [submodule "emacs.d/theme-changer"]
 	path = emacs.d/theme-changer
 	url = https://github.com/hadronzoo/theme-changer.git
+[submodule "emacs.d/git-emacs"]
+	path = emacs.d/git-emacs
+	url = https://github.com/tsgates/git-emacs.git
