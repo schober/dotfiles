@@ -7,12 +7,14 @@
   ((>= emacs-major-version 24)
    (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
    (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/solarized")
-   (load-theme 'solarized-dark t))
+   (load-theme 'solarized-light t))
   ((= emacs-major-version 23)
    (add-to-list 'load-path "~/.emacs.d/themes")
    (require 'color-theme-solarized)
    (require 'color-theme-zenburn)
-   (color-theme-solarized-dark)))
+   (color-theme-solarized-light)))
+
+
 
 ;; Put backup buffers somewhere NOT annoying
 (defconst emacs-tmp-dir
@@ -35,6 +37,11 @@
 ;; Enable syntax highlighting
 (setq global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
+
+;; Line numbers to the right
+(global-linum-mode 1)
+(setq linum-format "%d ")
+(custom-set-variables '(linum-mode 'dynamic))
 
 ;; Column numbers too!
 (setq column-number-mode t)
