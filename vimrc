@@ -122,6 +122,9 @@ else
    set nomodeline
 endif
 
+" ---- vim-pathogen ----
+execute pathogen#infect()
+
 " Shamelessly stolen from Ciaran McCreesh <ciaranm@ciaranm.org>
 if has('eval')
    fun! LoadColorScheme(schemes)
@@ -140,11 +143,11 @@ if has('eval')
    endfun
 
    if has("gui_running")
-      call LoadColorScheme("wombat:twilight256:desert")
+      call LoadColorScheme("solarized:wombat:twilight256:desert")
    elseif &t_Co == 256
-      call LoadColorScheme("wombat:twilight256:inkpot")
+      call LoadColorScheme("solarized:wombat:twilight256:inkpot")
    elseif &t_Co == 88
-      call LoadColorScheme("wombat:zellner")
+      call LoadColorScheme("solarized:wombat:zellner")
    else
       call LoadColorScheme("desert:darkblue:zellner")
    endif
@@ -391,3 +394,4 @@ if v:version >= 700
 endif
 
 set t_RV=
+
