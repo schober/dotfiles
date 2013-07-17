@@ -19,9 +19,13 @@ for dircolors in gdircolors dircolors ; do
 	fi
 done
 
-# gimmie an editor, make it a nice vi clone
-for EDITOR in vimx vim elvis vile nvi vi ; do
-	command -v $EDITOR >/dev/null 2>&1 && break
+## gimmie an editor, make it a nice vi clone
+#for EDITOR in vimx vim elvis vile nvi vi ; do
+#	command -v $EDITOR >/dev/null 2>&1 && break
+#done
+# gimmie an editor, and make it emacs24
+for EDITOR in $(where emacs); do
+	$EDITOR -version | grep 24 >/dev/null && break
 done
 export EDITOR
 
