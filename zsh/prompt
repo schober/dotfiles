@@ -8,24 +8,25 @@ PROMPT_USE_HG=true
 PROMPT_EXPAND_GIT=false
 
 # [user host MM/DD HH:MM:SS /path | git branch status | ... | return_code]
-# $ *
+# ❯ *
 
 setopt prompt_subst
-
 
 # Colors and controls
 local ASCII_RESET=$'%{\e[0m%}'
 local ASCII_BOLD=$'%{\e[1m%}'
-local USER_COLOR=$'%{\e[1;33m%}'
-local PROMPT_COLOR=$'%{\e[1;32m%}'
+local NONROOT_COLOR=$'%{\e[0;32m%}'
+local ROOT_COLOR=$'%{\e[0;33m%}'
+local USER_COLOR="%(!.${ROOT_COLOR}.${NONROOT_COLOR})"
+local PROMPT_COLOR=$'%{\e[0;32m%}'
 if [[ ${EUID} == 0 ]] ; then
-	PROMPT_COLOR=$'%{\e[1;31m%}'
+	PROMPT_COLOR=$'%{\e[0;31m%}'
 fi
-local HOST_COLOR=$'%{\e[1;32m%}'
-local DATE_COLOR=$'%{\e[1;31m%}'
-local TIME_COLOR=$'%{\e[1;34m%}'
-local CYAN_COLOR=$'%{\e[1;36m%}'
-local PINK_COLOR=$'%{\e[1;35m%}'
+local HOST_COLOR=$'%{\e[0;33m%}'
+local DATE_COLOR=$'%{\e[0;31m%}'
+local TIME_COLOR=$'%{\e[0;34m%}'
+local CYAN_COLOR=$'%{\e[0;36m%}'
+local PINK_COLOR=$'%{\e[0;35m%}'
 local ERROR_COLOR=$'%{\e[0;31m%}'
 
 # Formatting
@@ -46,7 +47,7 @@ local PROMPT_PREFIX="${USER_STR}${HOST_STR}${WINDOW_STR}${DATETIME_STR}${PATH_ST
 local STATUS_EXT="%(?..${SEP}${ERROR_COLOR}$?)"
 
 # Prompt symbol
-local SMBL="${RET}${PROMPT_COLOR}%(?..${ERROR_COLOR})%(!.#.$)${ASCII_RESET} "
+local SMBL="${RET}%(?.${PROMPT_COLOR}.${ERROR_COLOR})%(!.».›)${ASCII_RESET} "
 
 
 update_prompt() {

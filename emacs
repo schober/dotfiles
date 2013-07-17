@@ -13,16 +13,11 @@
 (setq calendar-latitude 40.67)
 (setq calendar-longitude -73.94)
 
-;; Load themes, default to zenburn
+;; Load themes, default to solarized
 (cond
   ((>= emacs-major-version 24)
    (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
    (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/solarized")
-;   (setq solarized-termcolors 16)
-;   (setq solarized-broken-srgb nil)
-;   (custom-set-variables
-;	'(solarized-termcolors 16)
-;	'(solarized-broken-srgb t))
    (require 'theme-changer)
    (change-theme 'solarized-light 'solarized-dark))
   ((= emacs-major-version 23)
