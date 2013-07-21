@@ -1,32 +1,9 @@
 #! /bin/emacs
 ;; Emacs config file (~/.emacs)
-;; Configuring emacs is hard!
 
-;; Little util here.
-(defun add-to-load-path (file)
-  (when (file-exists-p file)
-	(add-to-list 'load-path file)))
-
-;; Daytime/nighttime theme changer
-(add-to-load-path "~/.emacs.d/theme-changer")
-(setq calendar-location-name "New York, NY") 
-(setq calendar-latitude 40.67)
-(setq calendar-longitude -73.94)
-
-;; Load themes, default to solarized
-(cond
-  ((>= emacs-major-version 24)
-   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/solarized")
-   (require 'theme-changer)
-   (change-theme 'solarized-light 'solarized-dark))
-  ((= emacs-major-version 23)
-   (add-to-list 'load-path "~/.emacs.d/themes")
-   (add-to-list 'load-path "~/.emacs.d/themes/solarized")
-   (require 'color-theme-solarized)
-   (require 'color-theme-zenburn)
-   (setq theme-changer-mode "color-theme")
-   (change-theme 'color-theme-solarized-light 'color-theme-solarized-dark)))
+;; Foreign github packages
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'packages)
 
 ;; Put backup buffers somewhere NOT annoying
 (defconst emacs-tmp-dir
@@ -45,10 +22,6 @@
   (setq inferior-lisp-program "sbcl")
   (require 'slime)
   (slime-setup '(slime-repl slime-fancy slime-asdf)))
-
-;; git-emacs
-(add-to-load-path "~/.emacs.d/git-emacs")
-(require 'git-emacs)
 
 ;; Enable syntax highlighting
 (setq global-font-lock-mode t)
