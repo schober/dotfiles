@@ -19,3 +19,6 @@
 [submodule "emacs.d/highlight-parentheses"]
 	path = emacs.d/highlight-parentheses
 	url = https://github.com/nschum/highlight-parentheses.el.git
+[submodule "gnome-terminal/solarized"]
+	path = gnome-terminal/solarized
+	url = https://github.com/sigurdga/gnome-terminal-colors-solarized.git
