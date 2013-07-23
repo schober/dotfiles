@@ -92,6 +92,7 @@ my %links = (
 
 	'git-info'            => 'bin/git-info',
 	'git-untrack-ignored' => 'bin/git-untracked-ignored',
+	'git-largest-pack'    => 'bin/git-largest-pack',
 
 	gdbinit => '.gdbinit',
 );
