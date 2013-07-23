@@ -19,10 +19,6 @@ for dircolors in gdircolors dircolors ; do
 	fi
 done
 
-## gimmie an editor, make it a nice vi clone
-#for EDITOR in vimx vim elvis vile nvi vi ; do
-#	command -v $EDITOR >/dev/null 2>&1 && break
-#done
 # gimmie an editor, and make it emacs24
 for EDITOR in $(where emacs); do
 	$EDITOR -version | grep 24 >/dev/null && break
@@ -38,8 +34,13 @@ if [ "${EDITOR}" = vimx ] ; then
 	alias vim=vimx
 fi
 
-# aliases
+# display emacs in-terminal by default
+alias emacs='emacs -nw'
+alias emacsx='\emacs'
+
+# Typo corrections
 alias cd..='cd ..'
+alias sl='ls'
 
 # handles per OS aliases, fixes a few terms
 case `uname -s` in
@@ -115,6 +116,10 @@ wtfigo () {
 	esac
 }
 
+emacs-recompile () {
+	emacs --batch --eval '(byte-recompile-directory (expand-file-name ".") 0)'
+}
+
 alias rm='rm -i'
 alias df='df -h'
 alias du='du -h'
@@ -127,6 +132,7 @@ alias mtop='top -o cpu'
 alias mdiff='diff -ubE'
 alias mg='rgrep'
 alias mfe='free -m'
+alias em='emacs'
 
 alias cscope='cscope -bR'
 alias ctags-c++='ctags -R --c++-kinds=+p --fields=+iaS --extra=+q'

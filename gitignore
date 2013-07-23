@@ -1,4 +1,5 @@
 *.o
+*.elc
 cscope.*
 ctags
 .DS_Store
