@@ -23,6 +23,7 @@ done
 for EDITOR in $(where emacs); do
 	$EDITOR -version | grep 24 >/dev/null && break
 done
+EDITOR="${EDITOR} -nw"
 export EDITOR
 
 # make the history editor the editor we want

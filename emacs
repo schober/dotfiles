@@ -16,6 +16,14 @@
 (setq auto-save-list-file-prefix
   emacs-tmp-dir)
 
+;; emacs-x config
+(when window-system
+  ;; Default geometry
+  (set-frame-size (selected-frame) 104 35)
+
+  ;; No left fringe
+  (add-to-list 'initial-frame-alist '(left-fringe . 0)))
+
 ;; Set up slime
 (when (file-exists-p "~/.slime")
   (add-to-list 'load-path "~/.slime")
@@ -29,7 +37,7 @@
 
 ;; Line numbers to the right
 (global-linum-mode 1)
-(setq linum-format "%d ")
+(setq linum-format "%3d ")
 (custom-set-variables '(linum-mode 'dynamic))
 
 ;; Column numbers too!
