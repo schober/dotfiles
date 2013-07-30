@@ -136,7 +136,7 @@ alias mtop='top -o cpu'
 alias mdiff='diff -ubE'
 alias mg='rgrep'
 alias mfe='free -m'
-alias em='emacs'
+alias e='emacs'
 
 alias cscope='cscope -bR'
 alias ctags-c++='ctags -R --c++-kinds=+p --fields=+iaS --extra=+q'
