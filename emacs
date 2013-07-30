@@ -5,6 +5,9 @@
 (add-to-list 'load-path "~/.emacs.d/")
 (require 'packages)
 
+;; Keyboard shenanigans
+(require 'keyboard)
+
 ;; Put backup buffers somewhere NOT annoying
 (defconst emacs-tmp-dir
   (format "/%s/%s-%s/" temporary-file-directory "emacs" (user-uid)))
@@ -38,7 +41,16 @@
 ;; Line numbers to the right
 (global-linum-mode 1)
 (setq linum-format "%3d ")
-(custom-set-variables '(linum-mode 'dynamic))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
+ '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
+ '(linum-mode (quote dynamic) t)
+ '(tab-width 4)
+ '(vc-follow-symlinks t))
 
 ;; Column numbers too!
 (setq column-number-mode t)
@@ -53,16 +65,11 @@
 (setq c-default-style "linux"
       c-basic-offset 4)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(tab-width 4)
- '(custom-safe-themes (quote ("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'upcase-region 'disabled nil)

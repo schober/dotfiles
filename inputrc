@@ -17,7 +17,7 @@ $if mode=emacs
 		"\e[7~": beginning-of-line
 		"\e[8~": end-of-line
 		"\e[3~": delete-char
-		"\e[1;5C": forward-word
+ 		"\e[1;5C": forward-word
 		"\e[1;5D": backward-word
 		"\e[5C": forward-word
 		"\e[5D": backward-word
@@ -152,3 +152,9 @@ $if mode=emacs
 		"\e[4~": end-of-line
 	$endif
 $endif
+
+# We like the meta key, too!
+"\e[1;4C": forward-word
+"\e[1;4D": backward-word
+"\e[4C": forward-word
+"\e[4D": backward-word

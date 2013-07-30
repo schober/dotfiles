@@ -21,6 +21,10 @@ case $TERM in
 		bindkey '\e[1;5D' emacs-backward-word
 		bindkey '\e[5C' emacs-forward-word
 		bindkey '\e[5D' emacs-backward-word
+		bindkey '\e[1;4C' emacs-forward-word
+		bindkey '\e[1;4D' emacs-backward-word
+		bindkey '\e[4C' emacs-forward-word
+		bindkey '\e[4D' emacs-backward-word
 		bindkey '\eO5C' emacs-forward-word
 		bindkey '\eO5D' emacs-backward-word
 		bindkey '\eOC' emacs-forward-word
