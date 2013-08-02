@@ -1,11 +1,10 @@
 #! /bin/emacs
 ;; Emacs config file (~/.emacs)
 
-;; Foreign github packages
-(add-to-list 'load-path "~/.emacs.d/")
+;; Encapsulated setup
+(add-to-list 'load-path "~/.emacs.d")
+(require 'util)
 (require 'packages)
-
-;; Keyboard shenanigans
 (require 'keyboard)
 
 ;; Put backup buffers somewhere NOT annoying
@@ -29,9 +28,10 @@
 
 ;; Set up slime
 (when (file-exists-p "~/.slime")
-  (add-to-list 'load-path "~/.slime")
+  (load-package ".slime" 'slime)
+;  (add-to-list 'load-path "~/.slime")
+;  (require 'slime)
   (setq inferior-lisp-program "sbcl")
-  (require 'slime)
   (slime-setup '(slime-repl slime-fancy slime-asdf)))
 
 ;; Enable syntax highlighting
