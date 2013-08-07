@@ -8,6 +8,8 @@ ctags
 tags
 .*.swo
 .*.swp
+*#*#
+*.#*
 ._*
 .nfs.*
 .__afs*
