@@ -45,5 +45,5 @@
 
 ;; highlight-parenthesis
 (load-package "highlight-parentheses")
-(add-hook 'lisp-mode-hook 'highlight-parentheses-mode)
-(add-hook 'emacs-lisp-mode-hook 'highlight-parentheses-mode)
+(dolist (mode '(lisp-mode-hook emacs-lisp-mode-hook slime-mode))
+  (add-hook mode 'highlight-parentheses-mode))

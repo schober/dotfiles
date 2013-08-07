@@ -26,5 +26,6 @@
 
 (global-set-key (kbd "C-<right>") 'forward-sentence)
 (global-set-key (kbd "C-<left>") 'backward-sentence)
-(define-key emacs-lisp-mode-map (kbd "C-<right>") 'forward-sexp)
-(define-key emacs-lisp-mode-map (kbd "C-<left>") 'backward-sexp)
+(dolist (mode (list emacs-lisp-mode-map lisp-mode-map))
+  (define-key mode (kbd "C-<right>") 'forward-sexp)
+  (define-key mode (kbd "C-<left>") 'backward-sexp))
