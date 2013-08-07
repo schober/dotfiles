@@ -22,6 +22,9 @@
 (define-key input-decode-map "\e[1;8C" [(control meta right)])
 (define-key input-decode-map "\e[1;8D" [(control meta left)])
 
+;; Home/End
+(define-key input-decode-map "\e[4~" [end])
+
 ;;;; Control remappings ;;;;
 
 (global-set-key (kbd "C-<right>") 'forward-sentence)
