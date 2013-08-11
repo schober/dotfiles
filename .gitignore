@@ -3,3 +3,4 @@ answerback.Darwin
 *_local
 emacs.d/session.*
 emacs.d/elpa
+emacs.d/bookmarks

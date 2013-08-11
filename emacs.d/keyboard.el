@@ -4,6 +4,12 @@
 
 ;;;; Keyboard input remappings ;;;;
 
+;; C-<arrow>
+(define-key input-decode-map "\e[1;5A" [(control up)])
+(define-key input-decode-map "\e[1;5B" [(control down)])
+(define-key input-decode-map "\e[1;5C" [(control right)])
+(define-key input-decode-map "\e[1;5D" [(control left)])
+
 ;; M-<arrow>
 (define-key input-decode-map "\e[1;4A" [(meta up)])
 (define-key input-decode-map "\e[1;4B" [(meta down)])
