@@ -130,9 +130,9 @@ alias rm='rm -i'
 alias df='df -h'
 alias du='du -h'
 alias ping='ping -c4'
-if command -v autossh >/dev/null 2>&1; then
-	alias ssh='autossh -M 0'
-fi
+#if command -v autossh >/dev/null 2>&1; then
+#	alias ssh='autossh -M 0'
+#fi
 
 alias mdu='du -d 1 -h'
 alias mls='ls -lhFA'
