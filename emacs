@@ -50,7 +50,6 @@
  '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
  '(indent-tabs-mode nil)
  '(linum-mode (quote dynamic) t)
- '(tab-width 4)
  '(vc-follow-symlinks t))
 
 ;; Column numbers too!

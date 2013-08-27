@@ -15,6 +15,10 @@
 (define-key input-decode-map "\e[1;4B" [(meta down)])
 (define-key input-decode-map "\e[1;4C" [(meta right)])
 (define-key input-decode-map "\e[1;4D" [(meta left)])
+(define-key input-decode-map "\e[1;3A" [(meta up)])
+(define-key input-decode-map "\e[1;3B" [(meta down)])
+(define-key input-decode-map "\e[1;3C" [(meta right)])
+(define-key input-decode-map "\e[1;3D" [(meta left)])
 
 ;; S-M-<arrow>
 (define-key input-decode-map "\e[1;10A" [(shift meta up)])
