@@ -593,13 +593,13 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>215 182 445 270 0 0 1440 878 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>246 209 924 485 0 0 1440 878 </string>
+	<string>142 266 924 485 0 0 1440 878 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>528 562 384 129 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>94 85 850 666 0 0 1440 878 </string>
+	<string>0 109 850 666 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>94 85 850 666 0 0 1440 878 </string>
+	<string>-6 109 850 666 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>416 146 850 666 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -824,7 +824,7 @@
 				<real>0.0</real>
 			</dict>
 			<key>Cursor Type</key>
-			<integer>2</integer>
+			<integer>1</integer>
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
@@ -1431,7 +1431,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-07-28T19:44:45Z</date>
+	<date>2013-09-06T20:18:26Z</date>
 	<key>SUSkippedVersion</key>
 	<string>1.0.0.20130624</string>
 	<key>SavePasteHistory</key>
