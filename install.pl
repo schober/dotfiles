@@ -95,6 +95,8 @@ my %links = (
 	'git-largest-pack'    => 'bin/git-largest-pack',
 
 	gdbinit => '.gdbinit',
+
+        sbclrc => '.sbclrc',
 );
 
 my $contained = (substr $scriptdir, 0, length($home)) eq $home;

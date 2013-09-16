@@ -1,0 +1,14 @@
+(require :asdf)
+
+(setf asdf:*central-registry*
+   ;; Default directories, usually just the ``current directory''
+  '(*default-pathname-defaults*
+    ))
+
+;;; The following lines added by ql:add-to-init-file:
+#-quicklisp
+(let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
+                                       (user-homedir-pathname))))
+  (when (probe-file quicklisp-init)
+    (load quicklisp-init)))
+
