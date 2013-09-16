@@ -3,7 +3,10 @@
 (setf asdf:*central-registry*
    ;; Default directories, usually just the ``current directory''
   '(*default-pathname-defaults*
-    ))
+
+    ;; Additional places where ASDF can find
+    ;; system definition files
+    #p"~/lisp/cl-power/"))
 
 ;;; The following lines added by ql:add-to-init-file:
 #-quicklisp
