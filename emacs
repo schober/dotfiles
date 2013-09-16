@@ -34,6 +34,10 @@
   (setq inferior-lisp-program "sbcl")
   (slime-setup '(slime-repl slime-fancy slime-asdf)))
 
+;; git-emacs
+(add-to-load-path "~/.emacs.d/git-emacs")
+(require 'git-emacs)
+
 ;; Enable syntax highlighting
 (setq global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
