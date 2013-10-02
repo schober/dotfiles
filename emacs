@@ -18,6 +18,15 @@
 (setq auto-save-list-file-prefix
   emacs-tmp-dir)
 
+;; Screw the default save-buffers-kill-terminal
+(defun promptless-save-buffers-kill-terminal ()
+  "save some buffers, then exit unconditionally"
+  (interactive)
+  (save-some-buffers nil t)
+  (kill-emacs))
+
+(global-set-key (kbd "C-x C-c") 'promptless-save-buffers-kill-terminal)
+
 ;; emacs-x config
 (when window-system
   ;; Default geometry
