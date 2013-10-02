@@ -19,3 +19,6 @@
 [submodule "gnome-terminal/solarized"]
 	path = gnome-terminal/solarized
 	url = https://github.com/sigurdga/gnome-terminal-colors-solarized.git
+[submodule "emacs.d/paredit"]
+	path = emacs.d/paredit
+	url = http://mumble.net/~campbell/git/paredit.git/

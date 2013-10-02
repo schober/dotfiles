@@ -5,9 +5,9 @@
 
 ;; ELPA
 (setq package-archives
-	  '(("gnu" . "http://elpa.gnu.org/packages/")
-		("marmalade" . "http://marmalade-repo.org/packages/")
-		("melpa" . "http://melpa.milkbox.net/packages/")))
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+        ("marmalade" . "http://marmalade-repo.org/packages/")
+        ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 
 ;; Daytime/nighttime theme changer
@@ -47,3 +47,13 @@
 (load-package "highlight-parentheses")
 (dolist (mode '(lisp-mode-hook emacs-lisp-mode-hook slime-mode))
   (add-hook mode 'highlight-parentheses-mode))
+
+;; paredit mode
+(load-package "paredit")
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
