@@ -29,8 +29,6 @@
 ;; Set up slime
 (when (file-exists-p "~/.slime")
   (load-package ".slime" 'slime)
-;  (add-to-list 'load-path "~/.slime")
-;  (require 'slime)
   (setq inferior-lisp-program "sbcl")
   (slime-setup '(slime-repl slime-fancy slime-asdf)))
 

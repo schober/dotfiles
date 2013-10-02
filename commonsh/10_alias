@@ -142,6 +142,7 @@ alias mtop='top -o cpu'
 alias mdiff='diff -ubE'
 alias mg='rgrep'
 alias mfe='free -m'
+alias mfn='find . -name'
 
 alias e='emacs'
 alias g='git'
