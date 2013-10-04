@@ -5,7 +5,7 @@
 (add-to-list 'load-path "~/.emacs.d")
 (require 'util)
 (require 'packages)
-(require 'keyboard)
+(require 'custom-keyboard)
 
 ;; Put backup buffers somewhere NOT annoying
 (defconst emacs-tmp-dir
@@ -17,6 +17,9 @@
   `((".*" ,emacs-tmp-dir t)))
 (setq auto-save-list-file-prefix
   emacs-tmp-dir)
+
+;; Empty scratch
+(setq initial-scratch-message "")
 
 ;; Screw the default save-buffers-kill-terminal
 (defun promptless-save-buffers-kill-terminal ()

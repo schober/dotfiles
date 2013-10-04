@@ -1,6 +1,7 @@
 #! /bin/emacs
+(provide 'custom-keyboard)
 
-(provide 'keyboard)
+(require 'packages)
 
 ;;;; Keyboard input remappings ;;;;
 
@@ -35,10 +36,33 @@
 ;; Home/End
 (define-key input-decode-map "\e[4~" [end])
 
+;(define-key input-decode-map "\e[;)" (kbd "M-)"))
+
 ;;;; Control remappings ;;;;
 
-(global-set-key (kbd "C-<right>") 'forward-sentence)
-(global-set-key (kbd "C-<left>") 'backward-sentence)
-(dolist (mode (list emacs-lisp-mode-map lisp-mode-map))
-  (define-key mode (kbd "C-<right>") 'forward-sexp)
-  (define-key mode (kbd "C-<left>") 'backward-sexp))
+;; Global bindings
+(dolist (global-key-rebinding
+         '(("C-<right>" . forward-sentence)
+           ("C-<left>" . backward-sentence)
+           ("M-<up>" . beginning-of-buffer)
+           ("M-<down>" . end-of-buffer)
+           ("M-{" . switch-to-prev-buffer)
+           ("M-}" . switch-to-next-buffer)))
+  (global-set-key (kbd (car global-key-rebinding))
+		  (cdr global-key-rebinding)))
+
+;; Lisp mode bindings
+(dolist (lisp-mode-pair
+         '((emacs . emacs-lisp-mode-map)
+           (emacs . lisp-mode-map)
+           (paredit . paredit-mode-map)))
+  (eval-after-load (car lisp-mode-pair)
+    `(progn
+       (define-key ,(cdr lisp-mode-pair) (kbd "C-<right>") 'forward-sexp)
+       (define-key ,(cdr lisp-mode-pair) (kbd "C-<left>") 'backward-sexp)
+       (define-key ,(cdr lisp-mode-pair) (kbd "M-<up>") 'beginning-of-buffer)
+       (define-key ,(cdr lisp-mode-pair) (kbd "M-<down>") 'end-of-buffer)
+       (define-key ,(cdr lisp-mode-pair) (kbd "M-{") 'switch-to-prev-buffer)
+       (define-key ,(cdr lisp-mode-pair) (kbd "M-}") 'switch-to-next-buffer))))
+
+(define-key paredit-mode-map (kbd "RET") 'newline-and-indent)

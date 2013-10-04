@@ -9,7 +9,6 @@
         ("marmalade" . "http://marmalade-repo.org/packages/")
         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
-
 ;; Daytime/nighttime theme changer
 (add-to-load-path "~/.emacs.d/theme-changer")
 (setq calendar-location-name "New York, NY") 
@@ -27,7 +26,6 @@
    (add-to-load-path "~/.emacs.d/themes")
    (add-to-load-path "~/.emacs.d/themes/solarized")
    (require 'color-theme-solarized)
-   (require 'color-theme-zenburn)
    (setq theme-changer-mode "color-theme")
    (change-theme 'color-theme-solarized-light 'color-theme-solarized-dark)))
 
@@ -43,24 +41,10 @@
 (add-to-list 'auto-mode-alist '("\\.ml[ily]?$" . tuareg-mode))
 (add-to-list 'auto-mode-alist '("\\.topml$" . tuareg-mode))
 
-;; highlight-parenthesis
-(load-package "highlight-parentheses")
-(dolist (mode '(lisp-mode-hook emacs-lisp-mode-hook slime-mode))
-  (add-hook mode 'highlight-parentheses-mode))
-
 ;; paredit mode
 (load-package "paredit")
 (autoload 'enable-paredit-mode "paredit"
   "Turn on pseudo-structural editing of Lisp code." t)
-
-(defun glorious-paredit-mode ()
-  (enable-paredit-mode)
-  (local-set-key (kbd "RET") 'newline-and-indent))
-
-(add-hook 'emacs-lisp-mode-hook       #'glorious-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'glorious-paredit-mode)
-(add-hook 'ielm-mode-hook             #'glorious-paredit-mode)
-(add-hook 'lisp-mode-hook             #'glorious-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'glorious-paredit-mode)
-(add-hook 'scheme-mode-hook           #'glorious-paredit-mode)
-  
+(dolist (mode '(emacs-lisp-mode-hook eval-expression-minibuffer-setup-hook ielm-mode-hook
+                lisp-mode-hook lisp-interaction-mode-hook scheme-mode-hook))
+  (add-hook mode #'enable-paredit-mode))
