@@ -42,13 +42,13 @@
 
 ;; Global bindings
 (dolist (global-key-rebinding
-         '(("C-<right>" . forward-sentence)
-           ("C-<left>" . backward-sentence)
-           ("M-<up>" . beginning-of-buffer)
-           ("M-<down>" . end-of-buffer)
-           ("M-{" . switch-to-prev-buffer)
-           ("M-}" . switch-to-next-buffer)))
-  (global-set-key (kbd (car global-key-rebinding))
+         `((,(kbd "C-<right>") . forward-sentence)
+           (,(kbd "C-<left>") . backward-sentence)
+           (,(kbd "M-<up>") . beginning-of-buffer)
+           (,(kbd "M-<down>") . end-of-buffer)
+           (,(kbd "M-{") . switch-to-prev-buffer)
+           (,(kbd "M-}") . switch-to-next-buffer)))
+  (global-set-key (car global-key-rebinding)
 		  (cdr global-key-rebinding)))
 
 ;; Lisp mode bindings
