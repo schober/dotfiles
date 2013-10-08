@@ -29,6 +29,7 @@
   (kill-emacs))
 
 (global-set-key (kbd "C-x C-c") 'promptless-save-buffers-kill-terminal)
+(global-set-key (kbd "C-x c") 'promptless-save-buffers-kill-terminal)
 
 ;; emacs-x config
 (when window-system
