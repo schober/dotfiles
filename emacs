@@ -18,8 +18,9 @@
 (setq auto-save-list-file-prefix
   emacs-tmp-dir)
 
-;; Empty scratch
+;; Scratch should be empty and start in text-mode
 (setq initial-scratch-message "")
+(setq initial-major-mode 'text-mode)
 
 ;; Screw the default save-buffers-kill-terminal
 (defun promptless-save-buffers-kill-terminal ()
@@ -65,6 +66,7 @@
  '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
  '(indent-tabs-mode nil)
  '(linum-mode (quote dynamic) t)
+ '(sentence-end-double-space nil)
  '(vc-follow-symlinks t))
 
 ;; Column numbers too!

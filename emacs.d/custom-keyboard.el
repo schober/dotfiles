@@ -21,11 +21,11 @@
 (define-key input-decode-map "\e[1;3C" [(meta right)])
 (define-key input-decode-map "\e[1;3D" [(meta left)])
 
-;; S-M-<arrow>
-(define-key input-decode-map "\e[1;10A" [(shift meta up)])
-(define-key input-decode-map "\e[1;10B" [(shift meta down)])
-(define-key input-decode-map "\e[1;10C" [(shift meta right)])
-(define-key input-decode-map "\e[1;10D" [(shift meta left)])
+;; M-S-<arrow>
+(define-key input-decode-map "\e[1;10A" [(meta shift up)])
+(define-key input-decode-map "\e[1;10B" [(meta shift down)])
+(define-key input-decode-map "\e[1;10C" [(meta shift right)])
+(define-key input-decode-map "\e[1;10D" [(meta shift left)])
 
 ;; C-M-<arrow>
 (define-key input-decode-map "\e[1;8A" [(control meta up)])
@@ -35,8 +35,6 @@
 
 ;; Home/End
 (define-key input-decode-map "\e[4~" [end])
-
-;(define-key input-decode-map "\e[;)" (kbd "M-)"))
 
 ;;;; Control remappings ;;;;
 
@@ -53,9 +51,9 @@
 
 ;; Lisp mode bindings
 (dolist (lisp-mode-pair
-         '((emacs . emacs-lisp-mode-map)
-           (emacs . lisp-mode-map)
-           (paredit . paredit-mode-map)))
+	 '((emacs . emacs-lisp-mode-map)
+	   (emacs . lisp-mode-map)
+	   (paredit . paredit-mode-map)))
   (eval-after-load (car lisp-mode-pair)
     `(progn
        (define-key ,(cdr lisp-mode-pair) (kbd "C-<right>") 'forward-sexp)
