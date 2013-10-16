@@ -468,7 +468,22 @@
 	<key>FsTabDelay</key>
 	<real>10</real>
 	<key>GlobalKeyMap</key>
-	<dict/>
+	<dict>
+		<key>0xf702-0x340000</key>
+		<dict>
+			<key>Action</key>
+			<integer>22</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf703-0x340000</key>
+		<dict>
+			<key>Action</key>
+			<integer>22</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+	</dict>
 	<key>HiddenAFRStrokeThickness</key>
 	<real>0.0</real>
 	<key>HiddenAdvancedFontRendering</key>
@@ -508,11 +523,13 @@
 	<key>NSColorPanelMode</key>
 	<string>5</string>
 	<key>NSColorPickerPageableNameListDefaults</key>
-	<string>1solarized</string>
+	<string>1Solarized+tagged</string>
 	<key>NSColorPickerSlidersDefaults</key>
 	<string>1</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~</string>
+	<string>~/dotfiles/iterm2</string>
+	<key>NSNavPanelExpandedSizeForSaveMode</key>
+	<string>{712, 448}</string>
 	<key>NSNavPanelExpandedStateForSaveMode</key>
 	<true/>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -539,13 +556,13 @@
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame NSColorPanel</key>
-	<string>221 201 214 309 0 0 1440 878 </string>
+	<string>569 347 214 309 0 0 1440 878 </string>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>135 191 445 270 0 0 1440 878 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>337 322 924 485 0 0 1440 878 </string>
+	<string>276 293 924 485 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>213 157 1368 682 0 0 1440 878 </string>
+	<string>429 165 850 666 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>400 116 850 666 0 0 1440 878 </string>
 	<key>NeverWarnAboutShortLivedSessions_7B13759C-33B5-49F6-BD21-0B167F4B5AAA</key>
@@ -824,75 +841,68 @@
 					<key>Text</key>
 					<string>)</string>
 				</dict>
-				<key>0x30-0x40000</key>
+				<key>0x5b-0x40000</key>
 				<dict>
 					<key>Action</key>
-					<integer>10</integer>
+					<integer>11</integer>
 					<key>Text</key>
-					<string>0</string>
+					<string>0x1d 0x5b</string>
 				</dict>
-				<key>0x31-0x40000</key>
+				<key>0x5b-0xc0000</key>
 				<dict>
 					<key>Action</key>
-					<integer>10</integer>
+					<integer>11</integer>
 					<key>Text</key>
-					<string>1</string>
+					<string>0x1b 0x1d 0x5b</string>
 				</dict>
-				<key>0x32-0x40000</key>
+				<key>0x5d-0x40000</key>
 				<dict>
 					<key>Action</key>
-					<integer>10</integer>
+					<integer>11</integer>
 					<key>Text</key>
-					<string>2</string>
+					<string>0x1d 0x5d</string>
 				</dict>
-				<key>0x33-0x40000</key>
+				<key>0x5d-0xc0000</key>
 				<dict>
 					<key>Action</key>
-					<integer>10</integer>
+					<integer>11</integer>
 					<key>Text</key>
-					<string>3</string>
+					<string>0x1b 0x1d 0x5d</string>
 				</dict>
-				<key>0x34-0x40000</key>
+				<key>0x7b-0x60000</key>
 				<dict>
 					<key>Action</key>
-					<integer>10</integer>
+					<integer>11</integer>
 					<key>Text</key>
-					<string>4</string>
+					<string>0x1d 0x7b</string>
 				</dict>
-				<key>0x35-0x40000</key>
+				<key>0x7b-0xe0000</key>
 				<dict>
 					<key>Action</key>
-					<integer>10</integer>
+					<integer>11</integer>
 					<key>Text</key>
-					<string>5</string>
+					<string>0x1b 0x1d 0x7b</string>
 				</dict>
-				<key>0x36-0x40000</key>
+				<key>0x7d-0x60000</key>
 				<dict>
 					<key>Action</key>
-					<integer>10</integer>
+					<integer>11</integer>
 					<key>Text</key>
-					<string>6</string>
+					<string>0x1d 0x7d</string>
 				</dict>
-				<key>0x37-0x40000</key>
+				<key>0x7d-0xe0000</key>
 				<dict>
 					<key>Action</key>
-					<integer>10</integer>
+					<integer>11</integer>
 					<key>Text</key>
-					<string>7</string>
+					<string>0x1b 0x1d 0x7d</string>
 				</dict>
-				<key>0x38-0x40000</key>
+				<key>0x7f-0x40000</key>
 				<dict>
 					<key>Action</key>
-					<integer>10</integer>
+					<integer>11</integer>
 					<key>Text</key>
-					<string>8</string>
-				</dict>
-				<key>0x39-0x40000</key>
-				<dict>
-					<key>Action</key>
-					<integer>10</integer>
-					<key>Text</key>
-					<string>9</string>
+					<string>0xff</string>
 				</dict>
 				<key>0xf700-0x220000</key>
 				<dict>
@@ -916,6 +926,13 @@
 					<string>[1;6A</string>
 				</dict>
 				<key>0xf700-0x280000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
+					<string>[1;3A</string>
+				</dict>
+				<key>0xf700-0x2a0000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
@@ -955,6 +972,13 @@
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
+					<string>[1;3B</string>
+				</dict>
+				<key>0xf701-0x2a0000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
 					<string>[1;4B</string>
 				</dict>
 				<key>0xf701-0x2c0000</key>
@@ -990,6 +1014,13 @@
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
+					<string>[1;3D</string>
+				</dict>
+				<key>0xf702-0x2a0000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
 					<string>[1;4D</string>
 				</dict>
 				<key>0xf702-0x2c0000</key>
@@ -1021,6 +1052,13 @@
 					<string>[1;6C</string>
 				</dict>
 				<key>0xf703-0x280000</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Text</key>
+					<string>[1;3C</string>
+				</dict>
+				<key>0xf703-0x2a0000</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
@@ -1399,7 +1437,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-10-04T05:27:07Z</date>
+	<date>2013-10-15T18:30:59Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>

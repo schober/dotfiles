@@ -1,7 +1,7 @@
 # Be 8 bit clean. (EXPERIMENTAL: if problems occur, contact me)
 set input-meta on
 set output-meta on
-set convert-meta on
+set convert-meta off
 
 # Turn off that bell
 set bell-style none
