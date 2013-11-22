@@ -22,13 +22,13 @@
    (add-to-custom-themes "~/.emacs.d/themes")
    (add-to-custom-themes "~/.emacs.d/themes/solarized")
    (require 'theme-changer)
-   (change-theme 'solarized-light 'solarized-dark))
+   (change-theme 'solarized-light 'solarized-light))
   ((= emacs-major-version 23)
    (add-to-load-path "~/.emacs.d/themes")
    (add-to-load-path "~/.emacs.d/themes/solarized")
    (require 'color-theme-solarized)
    (setq theme-changer-mode "color-theme")
-   (change-theme 'color-theme-solarized-light 'color-theme-solarized-dark)))
+   (change-theme 'color-theme-solarized-light 'color-theme-solarized-light)))
 
 ;; git-emacs
 (load-package "git-emacs")

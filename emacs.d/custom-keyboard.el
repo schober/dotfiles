@@ -6,47 +6,52 @@
 ;;;; Keyboard input remappings ;;;;
 
 ;; C-<arrow>
-(define-key input-decode-map "\e[1;5A" [(control up)])
-(define-key input-decode-map "\e[1;5B" [(control down)])
-(define-key input-decode-map "\e[1;5C" [(control right)])
-(define-key input-decode-map "\e[1;5D" [(control left)])
+(define-key input-decode-map "\e[1;5A" (kbd "C-<up>"))
+(define-key input-decode-map "\e[1;5B" (kbd "C-<down>"))
+(define-key input-decode-map "\e[1;5C" (kbd "C-<right>"))
+(define-key input-decode-map "\e[1;5D" (kbd "C-<left>"))
 
 ;; M-<arrow>
-(define-key input-decode-map "\e[1;3A" [(meta up)])
-(define-key input-decode-map "\e[1;3B" [(meta down)])
-(define-key input-decode-map "\e[1;3C" [(meta right)])
-(define-key input-decode-map "\e[1;3D" [(meta left)])
+(define-key input-decode-map "\e[1;3A" (kbd "M-<up>"))
+(define-key input-decode-map "\e[1;3B" (kbd "M-<down>"))
+(define-key input-decode-map "\e[1;3C" (kbd "M-<right>"))
+(define-key input-decode-map "\e[1;3D" (kbd "M-<left>"))
 
 ;; C-S-<arrow>
-(define-key input-decode-map "\e[1;6A" [(control shift up)])
-(define-key input-decode-map "\e[1;6B" [(control shift down)])
-(define-key input-decode-map "\e[1;6C" [(control shift right)])
-(define-key input-decode-map "\e[1;6D" [(control shift left)])
+(define-key input-decode-map "\e[1;6A" (kbd "C-S-<up>"))
+(define-key input-decode-map "\e[1;6B" (kbd "C-S-<down>"))
+(define-key input-decode-map "\e[1;6C" (kbd "C-S-<right>"))
+(define-key input-decode-map "\e[1;6D" (kbd "C-S-<left>"))
 
 ;; M-S-<arrow>
-(define-key input-decode-map "\e[1;4A" [(meta shift up)])
-(define-key input-decode-map "\e[1;4B" [(meta shift down)])
-(define-key input-decode-map "\e[1;4C" [(meta shift right)])
-(define-key input-decode-map "\e[1;4D" [(meta shift left)])
+(define-key input-decode-map "\e[1;4A" (kbd "M-S-<up>"))
+(define-key input-decode-map "\e[1;4B" (kbd "M-S-<down>"))
+(define-key input-decode-map "\e[1;4C" (kbd "M-S-<right>"))
+(define-key input-decode-map "\e[1;4D" (kbd "M-S-<left>"))
 
 ;; C-M-<arrow>
-(define-key input-decode-map "\e[1;8A" [(control meta up)])
-(define-key input-decode-map "\e[1;8B" [(control meta down)])
-(define-key input-decode-map "\e[1;8C" [(control meta right)])
-(define-key input-decode-map "\e[1;8D" [(control meta left)])
+(define-key input-decode-map "\e[1;8A" (kbd "C-M-<up>"))
+(define-key input-decode-map "\e[1;8B" (kbd "C-M-<down>"))
+(define-key input-decode-map "\e[1;8C" (kbd "C-M-<right>"))
+(define-key input-decode-map "\e[1;8D" (kbd "C-M-<left>"))
 
 ;; Home/End
-(define-key input-decode-map "\e[4~" [end])
+(define-key input-decode-map "\e[4~" (kbd "<end>"))
 
-;; C-[ and C-] (yes, I'm taking over this house)
+;; We use C-] as an escape character for a "control" sequence (like meta)
 (global-unset-key "\C-]")
 
 ;; C-\ (which I want to reserve for other uses)
 (global-unset-key "\C-\\")
 
-;; C-DEL WIPWIPWIP
-;; TODO all the backspace/delete bindings are messed up
-;;(define-key input-decode-map "\377" [(control delete)])
+;; Workaround for M-[ (which is used as the xterm CSI) - we escape with C-]
+(define-key input-decode-map (kbd "C-] M-[") (kbd "M-["))
+
+;; Bind "C-<key>" for keys which we work around with "C-] <key>"
+(dolist (key '("DEL" "1" "2" "3" "4" "5" "6" "7" "8" "9" "0" "(" ")"))
+  (let ((from-key (concat "C-] " key))
+        (to-key (concat "C-" key)))
+    (define-key input-decode-map (kbd from-key) (kbd to-key))))
 
 ;;;; Control remappings ;;;;
 
@@ -58,7 +63,7 @@
            (,(kbd "M-<down>") . end-of-buffer)
            (,(kbd "M-{") . switch-to-prev-buffer)
            (,(kbd "M-}") . switch-to-next-buffer)
-           ;;(,(kbd "C-<delete>") . backward-kill-sentence)
+           (,(kbd "C-DEL") . backward-kill-sentence)
            ))
   (global-set-key (car global-key-rebinding)
 		  (cdr global-key-rebinding)))
@@ -74,7 +79,7 @@
        (define-key ,(cdr lisp-mode-pair) (kbd "C-<left>") 'backward-sexp)
        (define-key ,(cdr lisp-mode-pair) (kbd "M-<up>") 'beginning-of-buffer)
        (define-key ,(cdr lisp-mode-pair) (kbd "M-<down>") 'end-of-buffer)
-       ;;(define-key ,(cdr lisp-mode-pair) (kbd "C-<delete>") 'backward-kill-sexp)
+       (define-key ,(cdr lisp-mode-pair) (kbd "C-DEL") 'backward-kill-sexp)
        )))
 
 (define-key paredit-mode-map (kbd "RET") 'newline-and-indent)
