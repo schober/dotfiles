@@ -1,6 +1,7 @@
 ;; Packages I've imported from other peoples' github repos.
 (provide 'packages)
 
+(require 'code-utils)
 (require 'util)
 
 ;; ELPA
