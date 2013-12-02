@@ -141,6 +141,9 @@ alias mg='rgrep'
 alias mfe='free -m'
 alias mfn='find . -name'
 
+alias src='source'
+alias rsrc='resource'
+
 alias c='cd'
 alias l='ls'
 alias e='emacs'
