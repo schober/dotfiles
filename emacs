@@ -67,6 +67,7 @@
  '(indent-tabs-mode nil)
  '(linum-mode (quote dynamic) t)
  '(sentence-end-double-space nil)
+ '(tab-width 4)
  '(vc-follow-symlinks t))
 
 ;; Column numbers too!
