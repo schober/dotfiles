@@ -1,7 +1,33 @@
-(provide 'code-utils)
+;; Configuration relating to coding
+(provide 'code-config)
 
-(require 'packages)
+;; Enable syntax highlighting
+(setq global-font-lock-mode t)
+(setq font-lock-maximum-decoration t)
 
+;; Line numbers to the right
+(global-linum-mode 1)
+(setq linum-format "%3d ")
+
+;; Column numbers too!
+(setq column-number-mode t)
+
+;; We much prefer whole line kills
+(setq kill-whole-line t)
+
+;; Set language-specific features
+(setq c-default-style "linux"
+      c-basic-offset 4
+      indent-tabs-mode nil)
+
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
+;; Display whitespace
+(setq whitespace-style '(face trailing tabs tab-mark)
+      whitespace-display-mappings '((tab-mark ?\t [?\xBB ?\t])))
+
+;; Utilities for converting between different capitalization canonicalizations
 (defun camelcase  (s) (mapconcat 'capitalize (split-name s) ""))
 (defun underscore (s) (mapconcat 'downcase   (split-name s) "_"))
 (defun dasherize  (s) (mapconcat 'downcase   (split-name s) "-"))

@@ -1,5 +1,4 @@
-;; Manually imported packages
-;; helper utils
+;; Helper utils for emacs configuration
 
 (provide 'util)
 

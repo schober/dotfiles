@@ -1,7 +1,7 @@
-;; Packages I've imported from other peoples' github repos.
+;; Imported packages and systems
 (provide 'packages)
 
-(require 'code-utils)
+;; Helpers for the rest of this method
 (require 'util)
 
 ;; ELPA
@@ -49,3 +49,9 @@
 (dolist (mode '(emacs-lisp-mode-hook eval-expression-minibuffer-setup-hook ielm-mode-hook
                 lisp-mode-hook lisp-interaction-mode-hook scheme-mode-hook))
   (add-hook mode #'enable-paredit-mode))
+
+;; Set up slime
+(when (file-exists-p "~/.slime")
+  (load-package ".slime" 'slime)
+  (setq inferior-lisp-program "sbcl")
+  (slime-setup '(slime-repl slime-fancy slime-asdf)))
