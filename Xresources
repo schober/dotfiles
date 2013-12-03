@@ -45,6 +45,8 @@ XTerm*faceName: Monospace
 XTerm*background: black
 XTerm*foreground: #CCCCCC
 
+XTerm*boldColors: false
+
 XTerm*termName: xterm-256color
 
 XTerm*eightBitInput: false
@@ -97,6 +99,8 @@ XTerm*toolBar: false
 /* UXTerm */
 UXTerm*faceSize: 11
 UXTerm*faceName: Monospace
+
+UXTerm*boldColors: false
 
 UXTerm*termName: xterm-256color
 
@@ -153,7 +157,6 @@ UXTerm*toolBar: false
 
 /* URxvt */
 URxvt*font: xft:Monospace-9
-
 
 URxvt*termName: rxvt-unicode
 
