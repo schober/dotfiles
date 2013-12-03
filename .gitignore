@@ -4,3 +4,4 @@ answerback.Darwin
 emacs.d/session.*
 emacs.d/elpa
 emacs.d/bookmarks
+*.dat
