@@ -37,10 +37,10 @@ if [ "${EDITOR}" = vimx ] ; then
 fi
 
 # display emacs in-terminal by default
-alias emacs='emacs -nw'
-alias emacsx='\emacs'
+alias emacs='TERM=xterm-16color emacs -nw'
+alias xemacs='TERM=xterm-16color \emacs'
 
-# Typo corrections
+# Common typos
 alias cd..='cd ..'
 alias sl='ls'
 
@@ -147,6 +147,7 @@ alias rsrc='resource'
 alias c='cd'
 alias l='ls'
 alias e='emacs'
+alias v='vim'
 alias g='git'
 
 alias ga='git add'
