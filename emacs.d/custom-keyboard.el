@@ -1,7 +1,7 @@
 #! /bin/emacs
-(provide 'custom-keyboard)
-
 (require 'packages)
+
+(provide 'custom-keyboard)
 
 ;;;; Keyboard input remappings ;;;;
 
@@ -48,10 +48,13 @@
 (define-key input-decode-map (kbd "C-] M-[") (kbd "M-["))
 
 ;; Bind "C-<key>" for keys which we work around with "C-] <key>"
-(dolist (key '("DEL" "1" "2" "3" "4" "5" "6" "7" "8" "9" "0" "(" ")"))
+(dolist (key '("1" "2" "3" "4" "5" "6" "7" "8" "9" "0"
+               "!"     "#" "$" "%" "^" "&" "*" "(" ")"
+               "DEL"))
   (let ((from-key (concat "C-] " key))
         (to-key (concat "C-" key)))
     (define-key input-decode-map (kbd from-key) (kbd to-key))))
+
 
 ;;;; Control remappings ;;;;
 
@@ -63,8 +66,7 @@
            (,(kbd "M-<down>") . end-of-buffer)
            (,(kbd "M-{") . switch-to-prev-buffer)
            (,(kbd "M-}") . switch-to-next-buffer)
-           (,(kbd "C-DEL") . backward-kill-sentence)
-           ))
+           (,(kbd "C-DEL") . backward-kill-sentence)))
   (global-set-key (car global-key-rebinding)
 		  (cdr global-key-rebinding)))
 
@@ -80,9 +82,10 @@
        (define-key ,(cdr lisp-mode-pair) (kbd "M-<up>") 'beginning-of-buffer)
        (define-key ,(cdr lisp-mode-pair) (kbd "M-<down>") 'end-of-buffer)
        (define-key ,(cdr lisp-mode-pair) (kbd "C-DEL") 'backward-kill-sexp)
-       )))
+       (define-key ,(cdr lisp-mode-pair) (kbd "M-d") 'kill-sexp))))
 
-(define-key paredit-mode-map (kbd "RET") 'newline-and-indent)
+;; Paredit mode bindings
+(define-key paredit-mode-map (kbd "RET") 'paredit-newline)
 (define-key paredit-mode-map (kbd "C-\\") 'paredit-convolute-sexp)
 (define-key paredit-mode-map (kbd "C-] [") 'paredit-forward-barf-sexp)
 (define-key paredit-mode-map (kbd "C-] ]") 'paredit-forward-slurp-sexp)
