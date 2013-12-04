@@ -39,10 +39,10 @@
 (define-key input-decode-map "\e[4~" (kbd "<end>"))
 
 ;; We use C-] as an escape character for a "control" sequence (like meta)
-(global-unset-key "\C-]")
+(global-unset-key (kbd "C-]"))
 
 ;; C-\ (which I want to reserve for other uses)
-(global-unset-key "\C-\\")
+(global-unset-key (kbd "C-\\"))
 
 ;; Workaround for M-[ (which is used as the xterm CSI) - we escape with C-]
 (define-key input-decode-map (kbd "C-] M-[") (kbd "M-["))
@@ -53,7 +53,7 @@
                "DEL"))
   (let ((from-key (concat "C-] " key))
         (to-key (concat "C-" key)))
-    (define-key input-decode-map (kbd from-key) (kbd to-key))))
+    (define-key input-decode-map (read-kbd-macro from-key) (read-kbd-macro to-key))))
 
 
 ;;;; Control remappings ;;;;
