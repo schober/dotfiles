@@ -15,6 +15,6 @@
 (defun load-package (relative-path &optional package-name)
   (add-to-load-path (concat (file-name-directory load-file-name) relative-path))
   (if (null package-name)
-	  (require (intern relative-path))
-	(require package-name)))
+      (require (intern relative-path))
+    (require package-name)))
 (provide 'load-package)
