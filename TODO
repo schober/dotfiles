@@ -1,0 +1,7 @@
+* Generalize 'resource'
+
+* Generalize 'wtfigo'
+
+* Create env vars that point to various dotfiles file locations
+- Mainly for internal uses, e.g. functions in commons
+
