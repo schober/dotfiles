@@ -127,49 +127,10 @@ resource () {
 	source ~/.zshrc
 }
 
-alias rm='rm -i'
-alias df='df -h'
-alias du='du -h'
-alias ping='ping -c4'
-
-alias mdu='du -d 1 -h'
-alias mls='ls -lhFA'
-alias mrm='rm -rf'
-alias mtop='top -o cpu'
-alias mdiff='diff -ubE'
-alias mg='rgrep'
-alias mfe='free -m'
-alias mfn='find . -name'
-
-alias src='source'
-alias rsrc='resource'
-
-alias c='cd'
-alias l='ls'
-alias e='emacs'
-alias v='vim'
-alias g='git'
-
-alias ga='git add'
-alias gs='git status'
-alias gd='git diff'
-alias gdl='gd --color=always | less'
-alias gi='git commit'
-alias gia='git commit -a'
-alias gc='git checkout'
-alias gcb='git checkout -b'
-alias gb='git branch'
-alias gt='git tag'
-alias gpl='git pull'
-alias gplr='git pull --rebase'
-alias gps='git push'
-alias gpsf='git push --force'
-alias gsh='git stash'
-alias gr='git rebase'
-alias gm='git merge'
-
-alias cscope='cscope -bR'
-alias ctags-c++='ctags -R --c++-kinds=+p --fields=+iaS --extra=+q'
-alias maketex="make -f ${HOME}/.latex/Makefile"
+make-alias () {
+    echo -n "\nalias ${1}='${@:2}'" | cat ~/dotfiles/commonsh/11_alias - | LC_ALL=ASCII sort -u | sed '/^$/d' > ~/dotfiles/commonsh/.11_alias_tmp
+    mv ~/dotfiles/commonsh/.11_alias_tmp ~/dotfiles/commonsh/11_alias
+    resource
+} 
 
 command -v time >/dev/null 2>&1 && alias time='command time'
