@@ -130,6 +130,7 @@ resource () {
 make-alias () {
     echo -n "\nalias ${1}='${@:2}'" | cat ~/dotfiles/commonsh/11_alias - | LC_ALL=ASCII sort -u | sed '/^$/d' > ~/dotfiles/commonsh/.11_alias_tmp
     mv ~/dotfiles/commonsh/.11_alias_tmp ~/dotfiles/commonsh/11_alias
+    chmod +x ~/dotfiles/commonsh/11_alias
     resource
 } 
 
