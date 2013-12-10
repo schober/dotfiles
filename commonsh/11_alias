@@ -32,6 +32,7 @@ alias gsh='git stash'
 alias gsm='m git submodule'
 alias gt='git tag'
 alias k='kill'
+alias kn='kinit -f'
 alias l='ls'
 alias m='mv'
 alias maketex="make -f ${HOME}/.latex/Makefile"
