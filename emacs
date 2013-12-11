@@ -25,6 +25,8 @@
 
 (global-set-key (kbd "C-x C-c") 'promptless-save-buffers-kill-terminal)
 (global-set-key (kbd "C-x c") 'promptless-save-buffers-kill-terminal)
+(global-set-key (kbd "C-c C-x c") 'promptless-save-buffers-kill-terminal)
+(global-set-key (kbd "C-c C-x C-c") 'promptless-save-buffers-kill-terminal)
 
 ;; Emacs-managed config
 (custom-set-variables
