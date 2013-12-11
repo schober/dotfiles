@@ -47,7 +47,8 @@
 (autoload 'enable-paredit-mode "paredit"
   "Turn on pseudo-structural editing of Lisp code." t)
 (dolist (mode '(emacs-lisp-mode-hook eval-expression-minibuffer-setup-hook ielm-mode-hook
-                lisp-mode-hook lisp-interaction-mode-hook scheme-mode-hook))
+                lisp-mode-hook lisp-interaction-mode-hook scheme-mode-hook
+                slime-repl-mode-hook))
   (add-hook mode #'enable-paredit-mode))
 
 ;; Set up slime
@@ -55,3 +56,10 @@
   (load-package ".slime" 'slime)
   (setq inferior-lisp-program "sbcl")
   (slime-setup '(slime-repl slime-fancy slime-asdf)))
+
+;; Stop SLIME's REPL from grabbing DEL,
+;; which is annoying when backspacing over a '('
+(defun override-slime-repl-bindings-with-paredit ()
+  (define-key slime-repl-mode-map
+    (read-kbd-macro paredit-backward-delete-key) nil))
+(add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)
