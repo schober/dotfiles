@@ -1,0 +1,4 @@
+#! /bin/sh
+
+# Introduce where to bash
+alias where='which -a'

@@ -40,6 +40,7 @@
  '(indent-tabs-mode nil)
  '(linum-mode (quote dynamic) t)
  '(sentence-end-double-space nil)
+ '(sh-learn-basic-offset t)
  '(tab-width 4)
  '(vc-follow-symlinks t))
 ;; (custom-set-faces
@@ -81,3 +82,9 @@
   `((".*" ,emacs-tmp-dir t)))
 (setq auto-save-list-file-prefix
   emacs-tmp-dir)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

@@ -21,7 +21,7 @@ for dircolors in gdircolors dircolors ; do
 done
 
 # gimmie an editor, and make it emacs24
-for EDITOR in $(where emacs); do
+for EDITOR in $(where emacs | grep -vE "aliased to"); do
 	$EDITOR -version | grep 24 >/dev/null && break
 done
 EDITOR="${EDITOR} -nw"

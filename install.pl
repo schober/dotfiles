@@ -61,6 +61,7 @@ my %links = (
 
 	zsh      => '.zsh',
 	zshrc    => '.zshrc',
+	zshenv   => '.zshenv',
 
 	ksh      => '.ksh',
 	kshrc    => '.kshrc',

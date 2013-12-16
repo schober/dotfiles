@@ -1,0 +1,7 @@
+#! /bin/sh
+
+if [ ${SSH_CONNECTION} ]; then
+   export IS_REMOTE="yes"
+else
+   unset IS_REMOTE
+fi
