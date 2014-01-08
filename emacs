@@ -6,6 +6,7 @@
 (require 'custom-keyboard)
 (require 'packages)
 (require 'code-config)
+(require 'custom-chrome)
 
 (require 'util)
 
@@ -47,6 +48,7 @@
   emacs-tmp-dir)
 
 ;; Emacs-managed config
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -69,4 +71,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(mode-line ((t (:background "white" :foreground "brightgreen" :inverse-video nil :box nil :underline nil :slant normal :weight normal))))
+ '(powerline-active-warning1 ((t (:inherit mode-line :background "red" :foreground "brightwhite"))) t)
+ '(powerline-active0 ((t (:inherit default :background "black" :foreground "cyan"))))
+ '(powerline-active1 ((t (:inherit mode-line :background "brightcyan" :foreground "white"))))
+ '(powerline-active2 ((t (:inherit mode-line :background "black" :foreground "brightcyan")))))

@@ -30,6 +30,10 @@
    (setq theme-changer-mode "color-theme")
    (change-theme 'color-theme-solarized-light 'color-theme-solarized-light)))
 
+;; powerline
+(add-to-load-path "~/.emacs.d/powerline")
+(require 'powerline)
+
 ;; git-emacs
 (load-package "git-emacs")
 

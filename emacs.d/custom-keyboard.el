@@ -94,7 +94,12 @@
 (define-key paredit-mode-map (kbd "C-] {") 'paredit-backward-slurp-sexp)
 (define-key paredit-mode-map (kbd "C-] }") 'paredit-backward-barf-sexp)
 
-;; Global Init
+;;;; Global Init ;;;;;
 
 ;; Use CUA mode
 (cua-mode)
+
+;;;; Aquamacs ;;;;
+
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
