@@ -60,8 +60,10 @@
 
 ;; Global bindings
 (dolist (global-key-rebinding
-         `((,(kbd "C-<right>") . forward-sentence)
-           (,(kbd "C-<left>") . backward-sentence)
+         `((,(kbd "C-<left>") . backward-word)
+           (,(kbd "C-<right>") . forward-word)
+           (,(kbd "M-<left>") . backward-sentence)
+           (,(kbd "M-<right>") . forward-sentence)
            (,(kbd "M-<up>") . beginning-of-buffer)
            (,(kbd "M-<down>") . end-of-buffer)
            (,(kbd "M-{") . switch-to-prev-buffer)
@@ -77,8 +79,8 @@
 	   (paredit . paredit-mode-map)))
   (eval-after-load (car lisp-mode-pair)
     `(progn
-       (define-key ,(cdr lisp-mode-pair) (kbd "C-<right>") 'forward-sexp)
-       (define-key ,(cdr lisp-mode-pair) (kbd "C-<left>") 'backward-sexp)
+       (define-key ,(cdr lisp-mode-pair) (kbd "M-<left>") 'backward-sexp)
+       (define-key ,(cdr lisp-mode-pair) (kbd "M-<right>") 'forward-sexp)
        (define-key ,(cdr lisp-mode-pair) (kbd "M-<up>") 'beginning-of-buffer)
        (define-key ,(cdr lisp-mode-pair) (kbd "M-<down>") 'end-of-buffer)
        (define-key ,(cdr lisp-mode-pair) (kbd "C-DEL") 'backward-kill-sexp)
@@ -91,3 +93,8 @@
 (define-key paredit-mode-map (kbd "C-] ]") 'paredit-forward-slurp-sexp)
 (define-key paredit-mode-map (kbd "C-] {") 'paredit-backward-slurp-sexp)
 (define-key paredit-mode-map (kbd "C-] }") 'paredit-backward-barf-sexp)
+
+;; Global Init
+
+;; Use CUA mode
+(cua-mode)

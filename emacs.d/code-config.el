@@ -7,7 +7,6 @@
 
 ;; Line numbers to the right
 (global-linum-mode 1)
-(setq linum-format "%3d ")
 
 ;; Column numbers too!
 (setq column-number-mode t)

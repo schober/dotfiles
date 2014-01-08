@@ -38,6 +38,7 @@ fi
 
 # display emacs in-terminal by default
 alias emacs='TERM=xterm-16color emacs -nw'
+alias emacsclient='TERM=xterm-16color emacsclient -nw'
 alias xemacs='TERM=xterm-16color \emacs'
 
 # Common typos
