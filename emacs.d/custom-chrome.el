@@ -8,7 +8,7 @@
 (require 'powerline)
 (require 'powerline-themes)
 
-(defun powerline-default-theme-2 ()
+(defun powerline-personalized ()
   "Setup the default mode-line."
   (interactive)
   (setq-default mode-line-format
@@ -16,7 +16,9 @@
                   (:eval
                    (let* ((active (powerline-selected-window-active))
                           (face0 (if active 'powerline-active0 'powerline-inactive0))
+                          (face0-bold (if active 'powerline-active0-bold 'powerline-active0-bold))
                           (face1 (if active 'powerline-active1 'powerline-inactive1))
+                          (face1-bold (if active 'powerline-active1-bold 'powerline-active1-bold))
                           (face2 (if active 'powerline-active2 'powerline-inactive2))
                           (separator-left (intern (format "powerline-%s-%s"
                                                           powerline-default-separator
@@ -27,7 +29,7 @@
                           (lhs (list (powerline-buffer-id nil 'l)
                                      (powerline-raw " ")
                                      (funcall separator-left face0 face1)
-                                     (powerline-major-mode face1 'l)
+                                     (powerline-major-mode face1-bold 'l)
                                      (powerline-process face1)
                                      (powerline-minor-modes face1 'l)
                                      (powerline-narrow face1 'l)
@@ -36,23 +38,21 @@
                                      (powerline-vc face2 'r)))
                           (rhs (list (powerline-raw global-mode-string face2 'r)
                                      (if (buffer-modified-p)
-                                       (progn
-                                         (funcall separator-left face2 'powerline-active-warning1)
-                                         (powerline-raw " Modified" 'powerline-active-warning1 'r)
-                                         ;(funcall separator-right face2 face1)
-                                         )
+                                         (progn
+                                           (funcall separator-left face2 'powerline-active-warning1)
+                                           (powerline-raw " Modified" 'powerline-active-warning1 'r)
+                                        ;(funcall separator-right face2 face1)
+                                           )
                                        (funcall separator-right face1 face0))
-                                     (powerline-raw "%4l" nil 'l)
-                                     (powerline-raw ":" nil 'l)
-                                     (powerline-raw "%3c" nil 'r)
-                                     (powerline-raw " ")
-                                     (powerline-raw "%6p" nil 'r)
+                                     (powerline-raw " %6p" nil 'l)
+                                     (powerline-raw "%4l" face0-bold 'l)
+                                     (powerline-raw ":%3c " nil 'r)
                                      (powerline-hud face2 face1))))
                      (concat (powerline-render lhs)
                              (powerline-fill face2 (powerline-width rhs))
                              (powerline-render rhs)))))))
 
-(powerline-default-theme-2)
+(powerline-personalized)
 
 ;; Manual modeline
 

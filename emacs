@@ -60,6 +60,7 @@
  '(indent-tabs-mode nil)
  '(linum-format "%3d ")
  '(linum-mode (quote dynamic) t)
+ '(powerline-default-separator (quote alternate))
  '(sentence-end-double-space nil)
  '(sh-learn-basic-offset t)
  '(tab-width 4)
@@ -71,8 +72,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(mode-line ((t (:background "white" :foreground "brightgreen" :inverse-video nil :box nil :underline nil :slant normal :weight normal))))
- '(powerline-active-warning1 ((t (:inherit mode-line :background "red" :foreground "brightwhite"))) t)
+ '(mode-line ((t (:background "white" :foreground "brightgreen" :inverse-video t :box nil :underline nil :slant normal :weight normal))))
+ '(powerline-active-warning1 ((t (:inherit mode-line :background "red" :foreground "brightwhite" :inverse-video nil))) t)
  '(powerline-active0 ((t (:inherit default :background "black" :foreground "cyan"))))
- '(powerline-active1 ((t (:inherit mode-line :background "brightcyan" :foreground "white"))))
- '(powerline-active2 ((t (:inherit mode-line :background "black" :foreground "brightcyan")))))
+ '(powerline-active0-bold ((t (:inherit powerline-active0 :weight bold))) t)
+ '(powerline-active1 ((t (:inherit mode-line :background "white" :foreground "brightcyan"))))
+ '(powerline-active1-bold ((t (:inherit powerline-active1 :weight bold))) t)
+ '(powerline-active2 ((t (:inherit mode-line :background "brightblue" :foreground "white")))))
