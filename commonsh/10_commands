@@ -24,7 +24,8 @@ done
 for EDITOR in $(where emacs | grep -vE "aliased to"); do
 	$EDITOR -version | grep 24 >/dev/null && break
 done
-EDITOR="${EDITOR} -nw"
+#EDITOR="${EDITOR} -nw"
+EDITOR="emacsclient"
 export EDITOR
 
 # make the history editor the editor we want
@@ -38,7 +39,7 @@ fi
 
 # display emacs in-terminal by default
 alias emacs='TERM=xterm-16color emacs -nw'
-alias emacsclient='TERM=xterm-16color emacsclient -nw'
+alias emacsclient='TERM=xterm-16color emacsclient -nw --alternate-editor=""'
 alias xemacs='TERM=xterm-16color \emacs'
 
 # Common typos
