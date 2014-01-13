@@ -70,7 +70,7 @@
            (,(kbd "M-}") . switch-to-next-buffer)
            (,(kbd "C-DEL") . backward-kill-sentence)))
   (global-set-key (car global-key-rebinding)
-		  (cdr global-key-rebinding)))
+                  (cdr global-key-rebinding)))
 
 ;; Lisp mode bindings
 (dolist (lisp-mode-pair
@@ -79,6 +79,8 @@
 	   (paredit . paredit-mode-map)))
   (eval-after-load (car lisp-mode-pair)
     `(progn
+       (define-key ,(cdr lisp-mode-pair) (kbd "C-<left>") 'backward-word)
+       (define-key ,(cdr lisp-mode-pair) (kbd "C-<right>") 'forward-word)
        (define-key ,(cdr lisp-mode-pair) (kbd "M-<left>") 'backward-sexp)
        (define-key ,(cdr lisp-mode-pair) (kbd "M-<right>") 'forward-sexp)
        (define-key ,(cdr lisp-mode-pair) (kbd "M-<up>") 'beginning-of-buffer)
@@ -96,7 +98,6 @@
 
 ;;;; Global Init ;;;;;
 
-;; Use CUA mode
 (cua-mode)
 
 ;;;; Aquamacs ;;;;

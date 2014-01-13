@@ -16,9 +16,10 @@
                   (:eval
                    (let* ((active (powerline-selected-window-active))
                           (face0 (if active 'powerline-active0 'powerline-inactive0))
-                          (face0-bold (if active 'powerline-active0-bold 'powerline-active0-bold))
+                          (face0-bold (if active 'powerline-active0-bold 'powerline-inactive0-bold))
                           (face1 (if active 'powerline-active1 'powerline-inactive1))
-                          (face1-bold (if active 'powerline-active1-bold 'powerline-active1-bold))
+                          (face1-bold (if active 'powerline-active1-bold 'powerline-inactive1-bold))
+                          (face1-warning (if active 'powerline-active1-warning 'powerline-inactive1-warning))
                           (face2 (if active 'powerline-active2 'powerline-inactive2))
                           (separator-left (intern (format "powerline-%s-%s"
                                                           powerline-default-separator
@@ -26,8 +27,8 @@
                           (separator-right (intern (format "powerline-%s-%s"
                                                            powerline-default-separator
                                                            (cdr powerline-default-separator-dir))))
-                          (lhs (list (powerline-buffer-id nil 'l)
-                                     (powerline-raw " ")
+                          (lhs (list (powerline-buffer-id face0 'l)
+                                     (powerline-raw " " face0 'l)
                                      (funcall separator-left face0 face1)
                                      (powerline-major-mode face1-bold 'l)
                                      (powerline-process face1)
@@ -39,14 +40,14 @@
                           (rhs (list (powerline-raw global-mode-string face2 'r)
                                      (if (buffer-modified-p)
                                          (progn
-                                           (funcall separator-left face2 'powerline-active-warning1)
-                                           (powerline-raw " Modified" 'powerline-active-warning1 'r)
+                                           (funcall separator-left face2 face1-warning)
+                                           (powerline-raw " Modified" face1-warning 'r)
                                         ;(funcall separator-right face2 face1)
                                            )
                                        (funcall separator-right face1 face0))
-                                     (powerline-raw " %6p" nil 'l)
+                                     (powerline-raw " %6p" face0 'l)
                                      (powerline-raw "%4l" face0-bold 'l)
-                                     (powerline-raw ":%3c " nil 'r)
+                                     (powerline-raw ":%3c " face0 'r)
                                      (powerline-hud face2 face1))))
                      (concat (powerline-render lhs)
                              (powerline-fill face2 (powerline-width rhs))

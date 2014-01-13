@@ -18,16 +18,33 @@
 (setq inhibit-splash-screen t)
 
 ;; Screw the default save-buffers-kill-terminal
-(defun promptless-save-buffers-kill-terminal ()
-  "save some buffers, then exit unconditionally"
+(defun confirmationless-save-buffers-kill-terminal ()
+  "Save modified buffers, then kill the current frame (and possibly emacs) unconditionally."
   (interactive)
   (save-some-buffers nil t)
-  (kill-emacs))
+  (if (frame-parameter (selected-frame) 'client)
+      (delete-frame)
+    (kill-emacs)))
 
-(global-set-key (kbd "C-x C-c") 'promptless-save-buffers-kill-terminal)
-(global-set-key (kbd "C-x c") 'promptless-save-buffers-kill-terminal)
-(global-set-key (kbd "C-c C-x c") 'promptless-save-buffers-kill-terminal)
-(global-set-key (kbd "C-c C-x C-c") 'promptless-save-buffers-kill-terminal)
+(global-set-key (kbd "C-x C-c") 'confirmationless-save-buffers-kill-terminal)
+(global-set-key (kbd "C-x c") 'confirmationless-save-buffers-kill-terminal)
+(global-set-key (kbd "C-c C-x c") 'confirmationless-save-buffers-kill-terminal)
+(global-set-key (kbd "C-c C-x C-c") 'confirmationless-save-buffers-kill-terminal)
+
+;; Quick and painless buffer killing
+(defun confirmationless-save-and-kill-buffer ()
+  "Offer to save the current buffer, then kill it without further confirmation."
+  (interactive)
+  (let ((my-current-buffer (current-buffer)))
+    (save-some-buffers nil (lambda () (eq (current-buffer)
+                                          my-current-buffer))))
+  (set-buffer-modified-p nil)
+  (kill-this-buffer))
+
+(global-set-key (kbd "M-W") 'confirmationless-save-and-kill-buffer)
+
+;; Quick and painless (emacs) window switching
+(global-set-key (kbd "M-~") 'other-window)
 
 ;; emacs-x config
 (when window-system
@@ -72,10 +89,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(mode-line ((t (:background "white" :foreground "brightgreen" :inverse-video t :box nil :underline nil :slant normal :weight normal))))
- '(powerline-active-warning1 ((t (:inherit mode-line :background "red" :foreground "brightwhite" :inverse-video nil))) t)
- '(powerline-active0 ((t (:inherit default :background "black" :foreground "cyan"))))
+ '(mode-line ((t (:inherit mode-line-inactive))))
+ '(mode-line-inactive ((t (:background "white" :foreground "brightgreen" :inverse-video t :box nil :underline nil :slant normal :weight normal))))
+ '(powerline-active0 ((t (:inherit powerline-inactive0 :foreground "cyan"))) t)
  '(powerline-active0-bold ((t (:inherit powerline-active0 :weight bold))) t)
- '(powerline-active1 ((t (:inherit mode-line :background "white" :foreground "brightcyan"))))
+ '(powerline-active1 ((t (:inherit powerline-inactive1))))
  '(powerline-active1-bold ((t (:inherit powerline-active1 :weight bold))) t)
- '(powerline-active2 ((t (:inherit mode-line :background "brightblue" :foreground "white")))))
+ '(powerline-active1-warning ((t (:inherit powerline-active1 :background "red" :foreground "brightwhite" :inverse-video nil))) t)
+ '(powerline-active2 ((t (:inherit powerline-inactive2))))
+ '(powerline-inactive0 ((t (:inherit default :background "black" :foreground "cyan"))))
+ '(powerline-inactive0-bold ((t (:inherit powerline-inactive0 :weight bold))) t)
+ '(powerline-inactive1 ((t (:inherit mode-line :background "white" :foreground "brightcyan"))))
+ '(powerline-inactive1-bold ((t (:inherit powerline-inactive1 :weight bold))) t)
+ '(powerline-inactive1-warning ((t (:inherit powerline-inactive1))) t)
+ '(powerline-inactive2 ((t (:inherit mode-line :background "brightblue" :foreground "white")))))
