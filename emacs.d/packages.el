@@ -34,6 +34,10 @@
 (add-to-load-path "~/.emacs.d/powerline")
 (require 'powerline)
 
+;; multiple-cursors
+(add-to-load-path "~/.emacs.d/multiple-cursors")
+(require 'multiple-cursors)
+
 ;; git-emacs
 (load-package "git-emacs")
 
