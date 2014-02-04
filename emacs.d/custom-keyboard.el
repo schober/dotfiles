@@ -47,6 +47,13 @@
 ;; Workaround for M-[ (which is used as the xterm CSI) - we escape with C-]
 (define-key input-decode-map (kbd "C-] M-[") (kbd "M-["))
 
+;; Keys that we don't want modes to grab from us
+(global-unset-key (kbd "C-g"))
+(global-unset-key (kbd "C-d"))
+(global-unset-key (kbd "M-{"))
+(global-unset-key (kbd "M-}"))
+(set-quit-char ?\d)
+
 ;; Bind "C-<key>" for keys which we work around with "C-] <key>"
 (dolist (key '("1" "2" "3" "4" "5" "6" "7" "8" "9" "0"
                "!"     "#" "$" "%" "^" "&" "*" "(" ")"
@@ -68,7 +75,10 @@
            (,(kbd "M-<down>") . end-of-buffer)
            (,(kbd "M-{") . switch-to-prev-buffer)
            (,(kbd "M-}") . switch-to-next-buffer)
-           (,(kbd "C-DEL") . backward-kill-sentence)))
+           (,(kbd "C-DEL") . backward-kill-sentence)
+           (,(kbd "C-g") . goto-line)
+           (,(kbd "C-d") . abort-recursive-edit)
+           (,(kbd "C-f") . isearch-forward)))
   (global-set-key (car global-key-rebinding)
                   (cdr global-key-rebinding)))
 
@@ -98,7 +108,7 @@
 
 ;;;; Global Init ;;;;;
 
-(cua-mode)
+;; (cua-mode)
 
 ;;;; Aquamacs ;;;;
 
