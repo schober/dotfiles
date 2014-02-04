@@ -66,6 +66,8 @@
 
 ;; Emacs-managed config
 
+(defface powerline-inactive0 '((t (:inherit default))) "")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -77,7 +79,7 @@
  '(indent-tabs-mode nil)
  '(linum-format "%3d ")
  '(linum-mode (quote dynamic) t)
- '(powerline-default-separator (quote alternate))
+ '(powerline-default-separator (quote brace))
  '(sentence-end-double-space nil)
  '(sh-learn-basic-offset t)
  '(tab-width 4)
@@ -89,17 +91,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(mode-line ((t (:inherit mode-line-inactive))))
- '(mode-line-inactive ((t (:background "white" :foreground "brightgreen" :inverse-video t :box nil :underline nil :slant normal :weight normal))))
- '(powerline-active0 ((t (:inherit powerline-inactive0 :foreground "cyan"))) t)
+ '(mode-line ((t (:inherit mode-line-inactive :background "cyan" :inverse-video nil))))
+ '(mode-line-inactive ((t (:background "brightgreen" :foreground "white" :inverse-video nil))))
+ '(powerline-active0 ((t (:inherit powerline-inactive0 :background "cyan"))) t)
  '(powerline-active0-bold ((t (:inherit powerline-active0 :weight bold))) t)
  '(powerline-active1 ((t (:inherit powerline-inactive1))))
  '(powerline-active1-bold ((t (:inherit powerline-active1 :weight bold))) t)
  '(powerline-active1-warning ((t (:inherit powerline-active1 :background "red" :foreground "brightwhite" :inverse-video nil))) t)
  '(powerline-active2 ((t (:inherit powerline-inactive2))))
- '(powerline-inactive0 ((t (:inherit default :background "black" :foreground "cyan"))))
+ '(powerline-inactive0 ((t (:inherit mode-line-inactive :background "brightgreen" :foreground "white"))))
  '(powerline-inactive0-bold ((t (:inherit powerline-inactive0 :weight bold))) t)
- '(powerline-inactive1 ((t (:inherit mode-line :background "white" :foreground "brightcyan"))))
+ '(powerline-inactive1 ((t (:inherit mode-line :background "brightcyan" :foreground "white"))))
  '(powerline-inactive1-bold ((t (:inherit powerline-inactive1 :weight bold))) t)
  '(powerline-inactive1-warning ((t (:inherit powerline-inactive1))) t)
- '(powerline-inactive2 ((t (:inherit mode-line :background "brightblue" :foreground "white")))))
+ '(powerline-inactive2 ((t (:inherit mode-line :background "white" :foreground "brightblue")))))
