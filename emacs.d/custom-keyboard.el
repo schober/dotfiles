@@ -3,6 +3,7 @@
 
 (provide 'custom-keyboard)
 
+
 ;;;; Keyboard input remappings ;;;;
 
 ;; C-<arrow>
@@ -47,17 +48,15 @@
 ;; Workaround for M-[ (which is used as the xterm CSI) - we escape with C-]
 (define-key input-decode-map (kbd "C-] M-[") (kbd "M-["))
 
-;; Keys that we don't want modes to grab from us
-(global-unset-key (kbd "C-g"))
-(global-unset-key (kbd "C-d"))
-(global-unset-key (kbd "M-{"))
-(global-unset-key (kbd "M-}"))
-(set-quit-char ?\d)
+;; Globally unbind keys that we don't want modes to grab
+(dolist (key '("C-s" "C-d" "C-g" "C-o"
+               "M-{" "M-}"))
+  (global-unset-key (read-kbd-macro key)))
 
 ;; Bind "C-<key>" for keys which we work around with "C-] <key>"
 (dolist (key '("1" "2" "3" "4" "5" "6" "7" "8" "9" "0"
                "!"     "#" "$" "%" "^" "&" "*" "(" ")"
-               "DEL"))
+               "DEL" "RET"))
   (let ((from-key (concat "C-] " key))
         (to-key (concat "C-" key)))
     (define-key input-decode-map (read-kbd-macro from-key) (read-kbd-macro to-key))))
@@ -67,20 +66,34 @@
 
 ;; Global bindings
 (dolist (global-key-rebinding
-         `((,(kbd "C-<left>") . backward-word)
-           (,(kbd "C-<right>") . forward-word)
-           (,(kbd "M-<left>") . backward-sentence)
-           (,(kbd "M-<right>") . forward-sentence)
-           (,(kbd "M-<up>") . beginning-of-buffer)
-           (,(kbd "M-<down>") . end-of-buffer)
-           (,(kbd "M-{") . switch-to-prev-buffer)
-           (,(kbd "M-}") . switch-to-next-buffer)
-           (,(kbd "C-DEL") . backward-kill-sentence)
-           (,(kbd "C-g") . goto-line)
-           (,(kbd "C-d") . abort-recursive-edit)
-           (,(kbd "C-f") . isearch-forward)))
-  (global-set-key (car global-key-rebinding)
-                  (cdr global-key-rebinding)))
+         `(("C-s"       save-buffer)
+           ("C-d"       keyboard-quit)
+           ("C-f"       isearch-forward)
+           ("C-g"       goto-line)
+           ("C-o"       find-file)
+           ("M-{"       switch-to-prev-buffer)
+           ("M-}"       switch-to-next-buffer)
+	   ("M-|"       other-window)
+           ("<home>"    move-beginning-of-line)
+           ("<end>"     move-end-of-line)
+           ("C-RET"     open-line)
+           ("C-DEL"     backward-kill-word)
+           ("M-DEL"     backward-kill-sentence)
+           ("C-<left>"  backward-word)
+           ("C-<right>" forward-word)
+           ("M-<left>"  backward-sentence)
+           ("M-<right>" forward-sentence)
+           ("M-<up>"    beginning-of-buffer)
+           ("M-<down>"  end-of-buffer)
+           ("ESC ESC"   delete-other-windows)))
+  (global-set-key (read-kbd-macro (car global-key-rebinding))
+                  (cadr global-key-rebinding)))
+
+;; Minibuffer bindings
+(define-key minibuffer-local-map (kbd "C-d") 'abort-recursive-edit)
+
+;; Isearch mode bindings
+(define-key isearch-mode-map (kbd "C-f") 'isearch-repeat-forward)
 
 ;; Lisp mode bindings
 (dolist (lisp-mode-pair
@@ -95,20 +108,18 @@
        (define-key ,(cdr lisp-mode-pair) (kbd "M-<right>") 'forward-sexp)
        (define-key ,(cdr lisp-mode-pair) (kbd "M-<up>") 'beginning-of-buffer)
        (define-key ,(cdr lisp-mode-pair) (kbd "M-<down>") 'end-of-buffer)
-       (define-key ,(cdr lisp-mode-pair) (kbd "C-DEL") 'backward-kill-sexp)
-       (define-key ,(cdr lisp-mode-pair) (kbd "M-d") 'kill-sexp))))
+       (define-key ,(cdr lisp-mode-pair) (kbd "M-DEL") 'backward-kill-sexp)
+       (define-key ,(cdr lisp-mode-pair) (kbd "C-d") 'keyboard-quit))))
 
 ;; Paredit mode bindings
 (define-key paredit-mode-map (kbd "RET") 'paredit-newline)
+(define-key paredit-mode-map (kbd "C-DEL") 'paredit-backward-kill-word)
 (define-key paredit-mode-map (kbd "C-\\") 'paredit-convolute-sexp)
 (define-key paredit-mode-map (kbd "C-] [") 'paredit-forward-barf-sexp)
 (define-key paredit-mode-map (kbd "C-] ]") 'paredit-forward-slurp-sexp)
 (define-key paredit-mode-map (kbd "C-] {") 'paredit-backward-slurp-sexp)
 (define-key paredit-mode-map (kbd "C-] }") 'paredit-backward-barf-sexp)
 
-;;;; Global Init ;;;;;
-
-;; (cua-mode)
 
 ;;;; Aquamacs ;;;;
 
