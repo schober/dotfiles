@@ -5,6 +5,10 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
+;; Use hl-mode
+
+(global-hl-line-mode 1)
+
 ;; Config powerline
 (require 'powerline)
 (require 'powerline-themes)
