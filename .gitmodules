@@ -31,3 +31,6 @@
 [submodule "emacs.d/multiple-cursors"]
 	path = emacs.d/multiple-cursors
 	url = https://github.com/magnars/multiple-cursors.el.git
+[submodule "terminator-solarized"]
+	path = terminator-solarized
+	url = https://github.com/ghuntley/terminator-solarized.git
