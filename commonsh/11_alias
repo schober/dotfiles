@@ -42,6 +42,7 @@ alias kk='kill -9'
 alias kn='kinit -f'
 alias l='ls'
 alias m='mv'
+alias make-ramdisk='diskutil erasevolume HFS+ ramdisk $(hdiutil attach -nomount ram://8388608)'
 alias maketex="make -f ${HOME}/.latex/Makefile"
 alias mdiff='diff -ubE'
 alias mdu='du -d 1 -h'

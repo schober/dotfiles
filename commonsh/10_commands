@@ -25,7 +25,7 @@ for EDITOR in $(where emacs | grep -vE "aliased to"); do
 	$EDITOR -version | grep 24 >/dev/null && break
 done
 #EDITOR="${EDITOR} -nw"
-EDITOR="emacsclient"
+EDITOR="TERM=xterm-16color emacsclient -nw --alternate-editor="""
 export EDITOR
 
 # make the history editor the editor we want

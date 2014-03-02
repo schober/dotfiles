@@ -58,8 +58,11 @@
                "!"     "#" "$" "%" "^" "&" "*" "(" ")"
                "DEL" "RET"))
   (let ((from-key (concat "C-] " key))
-        (to-key (concat "C-" key)))
-    (define-key input-decode-map (read-kbd-macro from-key) (read-kbd-macro to-key))))
+        (to-key (concat "C-" key))
+        (meta-from-key (concat "C-M-] " key))
+        (meta-to-key (concat "C-M-" key)))
+    (define-key input-decode-map (read-kbd-macro from-key) (read-kbd-macro to-key))
+    (define-key input-decode-map (read-kbd-macro meta-from-key) (read-kbd-macro meta-to-key))))
 
 
 ;;;; Control remappings ;;;;
@@ -72,8 +75,12 @@
            ("C-g"       goto-line)
            ("C-o"       find-file)
            ("M-{"       switch-to-prev-buffer)
+           ("C-M-["     switch-to-prev-buffer)
            ("M-}"       switch-to-next-buffer)
-	   ("M-|"       other-window)
+           ("C-M-]"     switch-to-next-buffer)
+           ("M-|"       other-window)
+           ("C-M-\\"    other-window)
+           ("M-`"       other-window)
            ("<home>"    move-beginning-of-line)
            ("<end>"     move-end-of-line)
            ("C-RET"     open-line)
