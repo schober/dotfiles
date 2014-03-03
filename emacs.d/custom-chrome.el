@@ -27,22 +27,20 @@
                           (face1-warning (if active 'powerline-active1-warning 'powerline-inactive1-warning))
                           (face2 (if active 'powerline-active2 'powerline-inactive2))
                           (separator-left (intern (format "powerline-%s-left"
-                                                          powerline-default-separator
-                                                          )))
+                                                          powerline-default-separator)))
                           (separator-right (intern (format "powerline-%s-%s"
                                                            powerline-default-separator
                                                            (cdr powerline-default-separator-dir))))
                           (lhs (list (powerline-buffer-id face0 'l)
                                      (powerline-raw " " face0 'l)
-                                     (funcall separator-left face0 face1)
+                                     ;; (funcall separator-left face0 face1)
                                      (powerline-major-mode face1-bold 'l)
                                      (powerline-process face1)
                                      (powerline-minor-modes face1 'l)
                                      (powerline-narrow face1 'l)
                                      (powerline-raw " " face1)
                                      ;; (funcall separator-left face1 face2)
-                                     (powerline-vc face2 'r)
-                                     ))
+                                     (powerline-vc face2 'r)))
                           (rhs (list (powerline-raw global-mode-string face2 'r)
                                      (if (buffer-modified-p)
                                          (progn
@@ -51,8 +49,7 @@
                                            ;; (funcall separator-right face2 face1)
                                            )
                                        ;; (funcall separator-right face1 face0)
-                                       (powerline-raw " Unmodified" face1 'r)
-                                       )
+                                       (powerline-raw " Unmodified" face1 'r))
                                      (powerline-raw " %6p" face0 'l)
                                      (powerline-raw "%4l" face0-bold 'l)
                                      (powerline-raw ":%3c " face0 'r))))
@@ -61,47 +58,3 @@
                              (powerline-render rhs)))))))
 
 (powerline-personalized)
-
-;; Manual modeline
-
-;; (setq my-modeline-prefix
-;;       '(:eval (propertize (if (buffer-modified-p) " Mod " "     ")
-;;                           'face font-lock-warning-face)))
-;; (setq my-modeline-buffer-name
-;;       '(:eval (propertize "%b" 'face 'font-lock-keyword-face)))
-;; (setq my-modeline-mode
-;;       '(:eval (propertize "%m " 'face 'font-lock-string-face)
-;;               minor-mode-alist))
-;; (setq my-modeline-line
-;;       '(:eval (propertize "%02l")))
-;; (setq my-modeline-column
-;;       '(:eval (propertize "%02c")))
-;; (setq my-modeline-position
-;;       '(:eval (propertize "%p")))
-;; (setq my-modeline-size
-;;       '(:eval (propertize "%I")))
-;; (setq my-modeline-edit-state
-;;       '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
-;;                           'face 'font-lock-preprocessor-face)))
-;; (setq my-modeline-file-state
-;;       '(:eval (when buffer-read-only
-;;                  (concat ","
-;;                          (propertize "RO" 'face 'font-lock-type-face)))))
-
-;; (setq-default mode-line-format
-;;       (list
-;;        my-modeline-prefix
-;;        my-modeline-buffer-name
-;;        " ("
-;;        my-modeline-line
-;;        " : "
-;;        my-modeline-column
-;;        ") ["
-;;        my-modeline-position
-;;        "/"
-;;        my-modeline-size
-;;        "] ["
-;;        my-modeline-edit-state
-;;        my-modeline-file-state
-;;        "] "
-;;        ))
