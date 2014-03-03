@@ -16,6 +16,10 @@
 (setq calendar-latitude 40.67)
 (setq calendar-longitude -73.94)
 
+;; powerline
+(add-to-load-path "~/.emacs.d/powerline")
+(require 'powerline)
+
 ;; Load themes, default to solarized
 (cond
   ((>= emacs-major-version 24)
@@ -29,10 +33,6 @@
    (require 'color-theme-solarized)
    (setq theme-changer-mode "color-theme")
    (change-theme 'color-theme-solarized-light 'color-theme-solarized-light)))
-
-;; powerline
-(add-to-load-path "~/.emacs.d/powerline")
-(require 'powerline)
 
 ;; multiple-cursors
 (add-to-load-path "~/.emacs.d/multiple-cursors")
