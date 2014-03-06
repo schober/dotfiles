@@ -45,6 +45,9 @@
 ;; C-\ (which I want to reserve for other uses)
 (global-unset-key (kbd "C-\\"))
 
+;; Keypad delete, which the Kinesis Advantage has (oddly)
+(global-set-key [kp-delete] 'delete-char)
+
 ;; Workaround for M-[ (which is used as the xterm CSI) - we escape with C-]
 (define-key input-decode-map (kbd "C-] M-[") (kbd "M-["))
 
