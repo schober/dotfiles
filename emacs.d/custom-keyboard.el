@@ -52,14 +52,25 @@
 (define-key input-decode-map (kbd "C-] M-[") (kbd "M-["))
 
 ;; Globally unbind keys that we don't want modes to grab
-(dolist (key '("C-s" "C-d" "C-g" "C-o"
-               "M-{" "M-}"))
+(dolist (globally-unbound-key
+         '("0" "1" "2" "3" "4" "5" "6" "7" "8" "9"
+           "o" "p" "s" "d" "v" "b" "n"
+           ;; Beware the Untouchables: I (TAB), @ (SPC), M (RET), ? (DEL)
+           ))
+  (dolist (prefix '("C-" "M-" "C-M-"))
+    (global-unset-key (read-kbd-macro (concat prefix globally-unbound-key)))))
+
+(dolist (key '("C-o"  "C-@"
+               "M-l" "M-{" "M-}"
+               "C-M-[" "C-M-]"))
   (global-unset-key (read-kbd-macro key)))
 
-;; Bind "C-<key>" for keys which we work around with "C-] <key>"
+;; Bind "C-<key>" and "C-M-<key>" for keys which we work around with "C-] <key>" "and "C-M-] <key>"
 (dolist (key '("1" "2" "3" "4" "5" "6" "7" "8" "9" "0"
-               "!"     "#" "$" "%" "^" "&" "*" "(" ")"
-               "DEL" "RET"))
+               "!" "@" "#" "$" "%" "^" "&" "*" "(" ")"
+               "`" "~" "=" "+" ";" ":" "," "." "<" ">"
+               "'" "?" "|" "\""
+               "TAB" "SPC" "RET" "DEL"))
   (let ((from-key (concat "C-] " key))
         (to-key (concat "C-" key))
         (meta-from-key (concat "C-M-] " key))
