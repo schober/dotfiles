@@ -92,6 +92,7 @@
            ("C-1"       delete-other-windows)
            ("C-2"       split-window-below)
            ("C-3"       split-window-right)
+           ("C-6"       kill-this-buffer)
            ("C-0"       delete-window)
            ("M-{"       switch-to-prev-buffer)
            ("C-M-] ["   switch-to-prev-buffer)

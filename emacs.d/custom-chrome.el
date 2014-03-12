@@ -9,6 +9,10 @@
 
 (global-hl-line-mode 1)
 
+;; XEmacs
+
+(setq-default cursor-type 'bar)
+
 ;; Config powerline
 (require 'powerline)
 (require 'powerline-themes)
@@ -49,7 +53,7 @@
                                            ;; (funcall separator-right face2 face1)
                                            )
                                        ;; (funcall separator-right face1 face0)
-                                       (powerline-raw " Unmodified" face1 'r))
+                                       (powerline-raw " " face1 'r))
                                      (powerline-raw " %6p" face0 'l)
                                      (powerline-raw "%4l" face0-bold 'l)
                                      (powerline-raw ":%3c " face0 'r))))

@@ -77,6 +77,7 @@
  '(enable-recursive-minibuffers t)
  '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
  '(indent-tabs-mode nil)
+ '(ispell-program-name "/usr/local/bin/ispell")
  '(linum-format "%3d ")
  '(linum-mode (quote dynamic) t)
  '(powerline-default-separator (quote brace))
