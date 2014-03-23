@@ -571,9 +571,9 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>118 448 445 270 0 0 1440 878 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>59 125 924 485 0 0 1440 878 </string>
+	<string>436 164 924 485 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>475 183 850 666 0 0 1440 878 </string>
+	<string>570 81 850 666 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>400 116 850 666 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -1316,6 +1316,20 @@
 					<key>Text</key>
 					<string>0x1b 0x1d 0x60</string>
 				</dict>
+				<key>0x69-0x40000</key>
+				<dict>
+					<key>Action</key>
+					<integer>11</integer>
+					<key>Text</key>
+					<string>0x1d 0x69</string>
+				</dict>
+				<key>0x6d-0x40000</key>
+				<dict>
+					<key>Action</key>
+					<integer>11</integer>
+					<key>Text</key>
+					<string>0x1d 0x6d</string>
+				</dict>
 				<key>0x7b-0x60000</key>
 				<dict>
 					<key>Action</key>
@@ -1385,6 +1399,20 @@
 					<integer>11</integer>
 					<key>Text</key>
 					<string>0x1b 0x1d 0x7f</string>
+				</dict>
+				<key>0x9-0x40000</key>
+				<dict>
+					<key>Action</key>
+					<integer>11</integer>
+					<key>Text</key>
+					<string>0x1d 0x09</string>
+				</dict>
+				<key>0x9-0xc0000</key>
+				<dict>
+					<key>Action</key>
+					<integer>11</integer>
+					<key>Text</key>
+					<string>0x1b 0x1d 0x09</string>
 				</dict>
 				<key>0xd-0x40000</key>
 				<dict>
@@ -1937,7 +1965,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-03-11T04:06:38Z</date>
+	<date>2014-03-17T23:33:53Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
