@@ -12,8 +12,12 @@
 ;; XEmacs
 
 (setq-default cursor-type 'bar)
-(set-frame-font "-apple-Inconsolata_for_Powerline-medium-normal-normal-*-*-*-*-*-m-0-iso10646-1")
-(set-face-attribute 'default nil :height 150)
+(case (window-system)
+  (('ns)
+   (set-frame-font "-apple-Inconsolata_for_Powerline-medium-normal-normal-*-*-*-*-*-m-0-iso10646-1")
+   (set-face-attribute 'default nil :height 150))
+  (t
+   (set-frame-font "-unknown-Inconsolata-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")))
 
 ;; Config powerline
 (require 'powerline)
