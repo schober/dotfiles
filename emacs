@@ -88,6 +88,7 @@
  '(sh-learn-basic-offset t)
  '(solarized-broken-srgb nil)
  '(tab-width 4)
+ '(text-mode-hook (quote (turn-on-flyspell text-mode-hook-identify toggle-word-wrap)))
  '(undo-limit 2048576)
  '(vc-follow-symlinks t))
 
