@@ -1,6 +1,3 @@
-[submodule "emacs.d/themes/solarized"]
-	path = emacs.d/themes/solarized
-	url = https://github.com/schober/emacs-color-theme-solarized.git
 [submodule "emacs.d/asdf"]
 	path = emacs.d/asdf
 	url = git://common-lisp.net/projects/asdf/asdf.git
@@ -34,3 +31,6 @@
 [submodule "terminator-solarized"]
 	path = terminator-solarized
 	url = https://github.com/ghuntley/terminator-solarized.git
+[submodule "emacs.d/themes/solarized"]
+	path = emacs.d/themes/solarized
+	url = https://github.com/schober/emacs-color-theme-solarized.git
