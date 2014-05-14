@@ -4,6 +4,8 @@
 ;; Helpers for the rest of this method
 (require 'util)
 
+(require 'mode-mode)
+
 ;; ELPA
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")

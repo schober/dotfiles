@@ -6,12 +6,13 @@
 
 ;;;; INPUT remappings ;;;;
 
+
 (case (window-system)
-  
+
   ;; Proper windowed systems.
   (('x 'ns 'w32)
-   ;; (define-key input-decode-map "C-m" "C-m")
-   )
+   ;; TODO: Some day, fix all the keys...   
+  )
   
   ;; Terminal systems. What a modern world we live in!
   (t
@@ -53,7 +54,6 @@
    (define-key input-decode-map (kbd "C-] M-[") (kbd "M-["))
 
    ;; Bind "C-<key>" and "C-M-<key>" for keys which we work around with "C-] <key>" "and "C-M-] <key>"
-
    (dolist (key '("1" "2" "3" "4" "5" "6" "7" "8" "9" "0"
                   "!" "@" "#" "$" "%" "^" "&" "*" "(" ")"
                   "`" "~" "=" "+" ";" ":" "," "." "<" ">"
@@ -91,8 +91,10 @@
                             ((pc nil)
                              key)
                             (t
-                             ;; XEmacs et al can correctly interpret, e.g., "C-]". Replace "C-] ]" with "C-]".
-                             (replace-regexp-in-string "-\\][ \t]+" "-" key)))))
+                             (replace-regexp-in-string
+                              ;; XEmacs et al can correctly interpret, e.g., "C-]". Replace "C-] ]" with "C-]".
+                              "-\\][ \t]+" "-"
+                              key)))))
    `(progn
       ,@(map 'list
              (lambda (mode-bindings)
@@ -126,12 +128,15 @@
   ("M-f"       replace-regexp)
   ("C-g"       goto-line)
   ("C-o"       find-file)
+  ("M-o"       find-file-read-only)
+  ("C-p i"     package-install)
+  ("C-p l"     package-list-packages)
   ("C-v"       quoted-insert)
   ("C-b"       switch-to-buffer)
-  ("M-b"       list-buffers)
-  ("M-m"       kmacro-start-macro-or-insert-counter)
-  ("M-M"       kmacro-end-or-call-macro)
-  ;; ("ESC ESC"   delete-other-windows)
+  ("M-b"       ibuffer)
+  ("M-m"       mode-enable)
+  ("M-M"       mode-disable)
+  ("C-M-m"     mode-toggle)
   ("C-,"       customize)
   ("C-1"       delete-other-windows)
   ("C-2"       split-window-below)

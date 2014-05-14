@@ -14,7 +14,7 @@
 (setq-default cursor-type 'bar)
 
 (set-frame-font "-unknown-Inconsolata-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")
-(set-face-attribute 'default nil :height 150)
+(set-face-attribute 'default nil :height 145)
 
 ;; Config powerline
 (require 'powerline)

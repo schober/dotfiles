@@ -64,6 +64,11 @@
 (setq auto-save-list-file-prefix
   emacs-tmp-dir)
 
+;; I want to be able to reload emacs's configs
+(defun reload-emacs ()
+  (interactive)
+  (load-file "~/.emacs"))
+
 ;; Emacs-managed config
 
 (defface powerline-inactive0 '((t (:inherit default))) "")
@@ -76,10 +81,11 @@
  '(custom-safe-themes (quote ("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
  '(default-frame-alist (quote ((width . 134) (height . 40))))
  '(enable-recursive-minibuffers t)
+ '(exec-path (quote ("/usr/bin" "/bin" "/usr/sbin" "/sbin" "/usr/local/Cellar/emacs/24.3/libexec/emacs/24.3/x86_64-apple-darwin13.0.0" "/usr/local/bin" "~/bin")))
  '(fill-column 100)
  '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
  '(indent-tabs-mode nil)
- '(ispell-program-name "/usr/local/bin/ispell" t)
+ '(ispell-program-name "/usr/local/bin/ispell")
  '(linum-format "%3d ")
  '(linum-mode (quote dynamic) t)
  '(org-startup-folded nil)
