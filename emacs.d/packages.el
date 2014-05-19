@@ -36,6 +36,9 @@
    (setq theme-changer-mode "color-theme")
    (change-theme 'color-theme-solarized-light 'color-theme-solarized-light)))
 
+;; Autocomplete
+(require 'custom-ac)
+
 ;; multiple-cursors
 (add-to-load-path "~/.emacs.d/multiple-cursors")
 (require 'multiple-cursors)

@@ -14,7 +14,21 @@
 (setq-default cursor-type 'bar)
 
 (set-frame-font "-unknown-Inconsolata-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")
+(set-default-font "-unknown-Inconsolata-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")
+
 (set-face-attribute 'default nil :height 145)
+(add-to-list 'default-frame-alist '(width . 104))
+(add-to-list 'default-frame-alist '(height . 35))
+(add-to-list 'default-frame-alist '(left-fringe . 0))
+
+;; Emacsclient
+
+;; Work around broken solarized colours in emacsclient -t by reloading the theme
+;; whenever a frame is create/deleted and when the server is done editing
+(defun my-reload-solarized (frame)
+  (select-frame frame)
+  (load-theme 'solarized-light))
+(add-hook 'after-make-frame-functions 'my-reload-solarized)
 
 ;; Config powerline
 (require 'powerline)
@@ -65,3 +79,4 @@
                              (powerline-render rhs)))))))
 
 (powerline-personalized)
+(force-mode-line-update)

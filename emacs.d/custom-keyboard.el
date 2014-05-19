@@ -3,6 +3,8 @@
 
 (provide 'custom-keyboard)
 
+;; TODO: Bind all global keys in a minor mode and keep that mode on top of the minor-mode-alist.
+;;       http://stackoverflow.com/questions/683425/globally-override-key-binding-in-emacs/1758639
 
 ;;;; INPUT remappings ;;;;
 
@@ -80,7 +82,8 @@
 
 (dolist (key '("C-o"  "C-@"
                "M-l" "M-{" "M-}"
-               "C-M-[" "C-M-]"))
+               "C-M-[" "C-M-]"
+               "M-ESC" "ESC ESC ESC"))
   (global-unset-key (read-kbd-macro key)))
 
 ;; A meaty convenience
@@ -118,15 +121,15 @@
                            modes-list))))
              modes-bindings))))
 
-(global-unset-key (kbd "ESC ESC ESC"))
-
 (my-bind-keys
  (global
   ("C-s"       save-buffer)
   ("C-d"       keyboard-quit)
   ("C-f"       isearch-forward)
   ("M-f"       replace-regexp)
+  ("C-M-f"     isearch-forward-regexp)
   ("C-g"       goto-line)
+  ("C-k"       kill-whole-line)
   ("C-o"       find-file)
   ("M-o"       find-file-read-only)
   ("C-p i"     package-install)
@@ -134,6 +137,7 @@
   ("C-v"       quoted-insert)
   ("C-b"       switch-to-buffer)
   ("M-b"       ibuffer)
+  ("C-n"       make-frame)
   ("M-m"       mode-enable)
   ("M-M"       mode-disable)
   ("C-M-m"     mode-toggle)
@@ -142,6 +146,7 @@
   ("C-2"       split-window-below)
   ("C-3"       split-window-right)
   ("C-6"       kill-this-buffer)
+  ("M-6"       delete-frame)
   ("C-0"       delete-window)
   ("M-{"       switch-to-prev-buffer)
   ("C-M-] ["   switch-to-prev-buffer)
@@ -166,10 +171,12 @@
   ("C-d" abort-recursive-edit))
 
  (isearch-mode-map
-  ("C-f" isearch-repeat-forward))
+  ("C-f" isearch-repeat-forward)
+  ("C-d" isearch-abort))
 
  ((emacs-lisp-mode-map lisp-mode-map) 
-  ("M-f" replace-regexp))
+  ("M-f" replace-regexp)
+  ("M-k" kill-sexp))
  
  ((emacs-lisp-mode-map lisp-mode-map paredit-mode-map)
   ("C-<left>"      backward-word)

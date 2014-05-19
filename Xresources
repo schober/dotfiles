@@ -96,6 +96,12 @@ XTerm*color15: S_base3
 
 XTerm*toolBar: false
 
+XTerm*VT100.Translations: #override \
+    Ctrl<Key>BackSpace: string(0x1d) \n
+
+XTerm*VT100.otherKeymap.translations: #override \
+    Ctrl<Key>BackSpace: string(0x1d) \n
+
 /* UXTerm */
 UXTerm*faceSize: 11
 UXTerm*faceName: Monospace
