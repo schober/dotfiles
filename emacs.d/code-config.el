@@ -26,6 +26,10 @@
 (setq whitespace-style '(face trailing tabs tab-mark)
       whitespace-display-mappings '((tab-mark ?\t [?\xBB ?\t])))
 
+;; Mode inclusion
+(add-hook 'clojure-mode-hook 'eldoc-mode)
+(add-hook 'clojure-mode-hook 'paredit-mode)
+
 ;; Utilities for converting between different capitalization canonicalizations
 (defun camelcase  (s) (mapconcat 'capitalize (split-name s) ""))
 (defun underscore (s) (mapconcat 'downcase   (split-name s) "_"))
