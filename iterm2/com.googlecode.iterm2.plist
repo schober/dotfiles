@@ -573,7 +573,7 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>436 164 924 485 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>570 81 850 666 0 0 1440 878 </string>
+	<string>70 45 850 688 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>400 116 850 666 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -1965,7 +1965,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-03-17T23:33:53Z</date>
+	<date>2014-05-19T05:01:00Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -2005,7 +2005,7 @@
 	<key>WebKitDefaultFontSize</key>
 	<integer>11</integer>
 	<key>WebKitStandardFont</key>
-	<string>Lucida Grande</string>
+	<string>.Lucida Grande UI</string>
 	<key>WindowNumber</key>
 	<true/>
 	<key>WindowStyle</key>
@@ -2013,6 +2013,6 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>1.0.0.20140112</string>
+	<string>1.0.0.20140518</string>
 </dict>
 </plist>
