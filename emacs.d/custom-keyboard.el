@@ -3,6 +3,7 @@
 
 (provide 'custom-keyboard)
 
+;; TODO: Add support for key bindings attached to a hook.
 ;; TODO: Bind all global keys in a minor mode and keep that mode on top of the minor-mode-alist.
 ;;       http://stackoverflow.com/questions/683425/globally-override-key-binding-in-emacs/1758639
 
@@ -89,22 +90,27 @@
 ;; A meaty convenience
 (defmacro my-bind-keys (&rest modes-bindings)
   (flet ((postprocess-key (key)
-                          (declare (string key))
-                          (case (window-system)
-                            ((pc nil)
-                             key)
-                            (t
-                             (replace-regexp-in-string
-                              ;; XEmacs et al can correctly interpret, e.g., "C-]". Replace "C-] ]" with "C-]".
-                              "-\\][ \t]+" "-"
-                              key)))))
+           (declare (string key))
+           (case (window-system)
+             ((pc nil)
+              key)
+             (t
+              (replace-regexp-in-string
+               ;; XEmacs et al can correctly interpret, e.g., "C-]". Replace "C-] ]" with "C-]".
+               "-\\][ \t]+" "-"
+               key)))))
    `(progn
       ,@(map 'list
              (lambda (mode-bindings)
                (let* ((modes      (car mode-bindings))
                       (modes-list (if (listp modes)
-                                      modes
-                                    (list modes) ))
+                                      (if (listp (car modes))
+                                          (cdr modes)
+                                        modes)
+                                    (list modes)))
+                      (hook (when (and (listp modes)
+                                     (listp (car modes)))
+                              (caar modes)))
                       (bindings   (cdr mode-bindings)))
                  `(progn
                     ,@(map 'list
@@ -185,7 +191,7 @@
   ("M-<right>"     forward-sexp)
   ("M-<up>"        beginning-of-buffer)
   ("M-<down>"      end-of-buffer)
-  ("M-DEL"         backward-kill-sexp)
+  ;; ("M-DEL"         backward-kill-sexp)
   ("M-<backspace>" backward-kill-sexp)
   ("C-d"           keyboard-quit))
 
@@ -194,10 +200,18 @@
   ("C-DEL"         paredit-backward-kill-word)
   ("C-<backspace>" paredit-backward-kill-word)
   ("C-\\"          paredit-convolute-sexp)
-  ;; ("C-] ["         paredit-forward-barf-sexp)
-  ("C-] ]"         paredit-forward-slurp-sexp)
-  ("C-] {"         paredit-backward-slurp-sexp)
-  ("C-] }"         paredit-backward-barf-sexp)))
+  ;("C-] ["         paredit-forward-barf-sexp)
+  ;("C-] ]"         paredit-forward-slurp-sexp)
+  ;("C-] {"         paredit-backward-slurp-sexp)
+  ;("C-] }"         paredit-backward-barf-sexp)
+  ("M-("           paredit-wrap-round)
+  ("M-["           paredit-wrap-square)
+  ("M-{"           paredit-wrap-curly))
+
+; ((compilation-mode-hook) compilation-mode-map
+;  ("C-M-] ["   switch-to-prev-buffer)
+;  ("C-M-] ]"   switch-to-next-buffer)
+ )
 
 
 ;;;; XEmacs ;;;;
