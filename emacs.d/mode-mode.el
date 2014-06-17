@@ -36,7 +36,11 @@
 
 (defun mode-enable ()
   (interactive)
-  (let* ((enabled-modes (cons major-mode minor-mode-list))
+  (let* ((enabled-minor-modes (remove-if-not (lambda (sym)
+                                               (and (boundp sym)
+                                                    (symbol-value sym)))
+                                             minor-mode-list))
+         (enabled-modes (cons major-mode enabled-minor-modes))
          (selected-mode (prompt-for-mode "Enable Mode: " enabled-modes t)))
     (funcall selected-mode)))
 
