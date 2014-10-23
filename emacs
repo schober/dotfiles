@@ -41,11 +41,6 @@
   (set-buffer-modified-p nil)
   (kill-this-buffer))
 
-(global-set-key (kbd "M-W") 'confirmationless-save-and-kill-buffer)
-
-;; Quick and painless (emacs) window switching
-(global-set-key (kbd "M-~") 'other-window)
-
 ;; emacs-x config
 (when window-system
   ;; Default geometry

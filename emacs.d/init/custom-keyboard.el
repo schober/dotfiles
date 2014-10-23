@@ -115,15 +115,22 @@
                  `(progn
                     ,@(map 'list
                            (lambda (mode)
-                             `(progn
-                                ,@(map 'list
-                                       (lambda (binding)
-                                         (let ((key (postprocess-key (car binding)))
-                                               (fn  (cadr binding)))
-                                           (if (eq 'global mode)
-                                               `(global-set-key (read-kbd-macro ,key) ',fn)
-                                             `(define-key ,mode (read-kbd-macro ,key) ',fn))))
-                                       bindings)))
+                             (let* ((mode-map (if (listp mode)
+                                                  (car mode)
+                                                mode))
+                                    (mode-hook (when (listp mode)
+                                                 (cdr mode)))
+                                    (bindings (map 'list
+                                                   (lambda (binding)
+                                                     (let ((key (postprocess-key (car binding)))
+                                                           (fn  (cadr binding)))
+                                                       (if (eq 'global mode-map)
+                                                           `(global-set-key (read-kbd-macro ,key) ',fn)
+                                                         `(define-key ,mode-map (read-kbd-macro ,key) ',fn))))
+                                                   bindings)))
+                               `(,@(if mode-hook
+                                       `(add-hook ',mode-hook (lambda () ,@bindings))
+                                     `(progn ,@bindings)))))
                            modes-list))))
              modes-bindings))))
 
@@ -137,10 +144,14 @@
   ("C-M-f"     isearch-forward-regexp)
   ("C-g"       goto-line)
   ("C-k"       kill-whole-line)
+  ;; ("M-w"       kill-buffer)
+  ("M-W"       confirmationless-save-and-kill-buffer)
   ("C-o"       find-file)
   ("M-o"       find-file-read-only)
   ("C-p i"     package-install)
   ("C-p l"     package-list-packages)
+  ("C-x C-x"   execute-extended-command)
+  ("C-x M-x"   top-level)
   ("C-v"       quoted-insert)
   ("C-b"       switch-to-buffer)
   ("M-b"       ibuffer)
@@ -172,8 +183,9 @@
   ("M-<left>"  backward-sentence)
   ("M-<right>" forward-sentence)
   ("M-<up>"    beginning-of-buffer)
-  ("M-<down>"  end-of-buffer))
- 
+  ("M-<down>"  end-of-buffer)
+  ("<f5>"      kmacro-end-or-call-macro))
+
  (minibuffer-local-map
   ("C-d" abort-recursive-edit))
 
@@ -181,10 +193,13 @@
   ("C-f" isearch-repeat-forward)
   ("C-d" isearch-abort))
 
- ((emacs-lisp-mode-map lisp-mode-map) 
+ ((emacs-lisp-mode-map lisp-mode-map)
   ("M-f" replace-regexp)
   ("M-k" kill-sexp))
- 
+
+ (((org-mode-map . org-mode-hook))
+  ("C-k" kill-whole-line))
+
  ((emacs-lisp-mode-map lisp-mode-map paredit-mode-map)
   ("C-<left>"      backward-word)
   ("C-<right>"     forward-word)
