@@ -1,6 +1,6 @@
-# !/bin/sh
-# Aliases that have been programmatically added.
-# Touch at your own risk.
+#!/bin/sh
+#Aliases that have been programmatically added.
+#Touch at your own risk.
 alias c='cd'
 alias cscope='cscope -bR'
 alias ctags-c++='ctags -R --c++-kinds=+p --fields=+iaS --extra=+q'
@@ -8,6 +8,7 @@ alias df='df -h'
 alias du='du -h'
 alias e='emacs'
 alias ec='emacsclient'
+alias emacs-benchmark='time emacs -e -nw kill-emacs'
 alias g='git'
 alias ga='git add'
 alias gb='git branch'
@@ -42,6 +43,8 @@ alias gsmi='git submodule init'
 alias gsmu='git submodule update --remote'
 alias gsn='git commit -a -m snapshot'
 alias gt='git tag'
+alias gv='git mv'
+alias intellij-reset='ibus-daemon -rd'
 alias k='kill'
 alias kk='kill -9'
 alias kn='kinit -f'
@@ -50,7 +53,7 @@ alias m='mv'
 alias make-ramdisk='diskutil erasevolume HFS+ ramdisk $(hdiutil attach -nomount ram://8388608)'
 alias maketex="make -f ${HOME}/.latex/Makefile"
 alias mdiff='diff -ubE'
-alias mdu='du -d 1 -h'
+alias mdu='du -d 1 -h | sort --human-numeric-sort'
 alias mfe='free -m'
 alias mfn='find . -name'
 alias mg='rgrep'
@@ -66,5 +69,6 @@ alias s='ssh'
 alias src='source'
 alias t='top'
 alias ti='tig'
+alias tm='tmux'
 alias v='vim'
 alias z='zsh'

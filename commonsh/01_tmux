@@ -1,0 +1,9 @@
+#! /bin/sh
+
+# Start the tmux backend if not already started.
+tmux start
+
+# Set up default session(s), all in the same group.
+tmux new-session -d -s host >/dev/null 2>&1
+tmux new-session -d -s host-right -t host >/dev/null 2>&1
+tmux new-session -d -s remote -t host >/dev/null 2>&1
