@@ -130,6 +130,7 @@
 (my-bind-keys
  (global
   ("C-s"       save-buffer)
+  ("M-s"       set-visited-file-name)
   ("C-d"       keyboard-quit)
   ("C-f"       isearch-forward)
   ("M-f"       replace-regexp)
@@ -206,7 +207,8 @@
   ;("C-] }"         paredit-backward-barf-sexp)
   ("M-("           paredit-wrap-round)
   ("M-["           paredit-wrap-square)
-  ("M-{"           paredit-wrap-curly))
+  ;; ("M-{"           paredit-wrap-curly)
+  ("M-K"           paredit-splice-sexp-killing-backward))
 
 ; ((compilation-mode-hook) compilation-mode-map
 ;  ("C-M-] ["   switch-to-prev-buffer)
@@ -216,5 +218,6 @@
 
 ;;;; XEmacs ;;;;
 
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
+(setq mac-command-modifier 'control)
+(setq mac-option-modifier 'meta)
+(setq mac-right-command-modifier 'meta)

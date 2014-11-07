@@ -3,7 +3,9 @@
 
 ;; Helpers for the rest of this method
 (require 'util)
+(require 'package)
 
+;; mode-mode
 (require 'mode-mode)
 
 ;; ELPA
@@ -11,12 +13,13 @@
       '(("gnu" . "http://elpa.gnu.org/packages/")
         ("marmalade" . "http://marmalade-repo.org/packages/")
         ("melpa" . "http://melpa.milkbox.net/packages/")))
+(package-initialize)
 
 ;; Daytime/nighttime theme changer
-(add-to-load-path "~/.emacs.d/theme-changer")
-(setq calendar-location-name "New York, NY") 
-(setq calendar-latitude 40.67)
-(setq calendar-longitude -73.94)
+;(add-to-load-path "~/.emacs.d/theme-changer")
+;(setq calendar-location-name "New York, NY") 
+;(setq calendar-latitude 40.67)
+;(setq calendar-longitude -73.94)
 
 ;; powerline
 (add-to-load-path "~/.emacs.d/powerline")
@@ -27,8 +30,9 @@
   ((>= emacs-major-version 24)
    (add-to-custom-themes "~/.emacs.d/themes")
    (add-to-custom-themes "~/.emacs.d/themes/solarized")
-   (require 'theme-changer)
-   (change-theme 'solarized-light 'solarized-light))
+   ;(require 'theme-changer)
+   ;(change-theme 'solarized-light 'solarized-light)
+   (load-theme 'solarized-light t))
   ((= emacs-major-version 23)
    (add-to-load-path "~/.emacs.d/themes")
    (add-to-load-path "~/.emacs.d/themes/solarized")

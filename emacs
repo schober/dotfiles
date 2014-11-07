@@ -2,7 +2,7 @@
 ;; Emacs config file (~/.emacs)
 
 ;; Encapsulated setup
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/init"))
 (require 'packages)
 (require 'custom-keyboard)
 (require 'code-config)
@@ -98,26 +98,6 @@
  '(text-mode-hook (quote (turn-on-flyspell text-mode-hook-identify toggle-word-wrap)))
  '(undo-limit 2048576)
  '(vc-follow-symlinks t))
-
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(mode-line ((t (:inherit mode-line-inactive :background "cyan" :inverse-video nil))))
-;;  '(mode-line-inactive ((t (:background "brightgreen" :foreground "white" :inverse-video nil))))
-;;  '(powerline-active0 ((t (:inherit powerline-inactive0 :background "cyan"))) t)
-;;  '(powerline-active0-bold ((t (:inherit powerline-active0 :weight bold))) t)
-;;  '(powerline-active1 ((t (:inherit powerline-inactive1))))
-;;  '(powerline-active1-bold ((t (:inherit powerline-active1 :weight bold))) t)
-;;  '(powerline-active1-warning ((t (:inherit powerline-active1 :background "red" :foreground "brightwhite" :inverse-video nil))) t)
-;;  '(powerline-active2 ((t (:inherit powerline-inactive2))))
-;;  '(powerline-inactive0 ((t (:inherit mode-line-inactive :background "brightgreen" :foreground "white"))))
-;;  '(powerline-inactive0-bold ((t (:inherit powerline-inactive0 :weight bold))) t)
-;;  '(powerline-inactive1 ((t (:inherit mode-line :background "brightcyan" :foreground "white"))))
-;;  '(powerline-inactive1-bold ((t (:inherit powerline-inactive1 :weight bold))) t)
-;;  '(powerline-inactive1-warning ((t (:inherit powerline-inactive1))) t)
-;;  '(powerline-inactive2 ((t (:inherit mode-line :background "white" :foreground "brightblue")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

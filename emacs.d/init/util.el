@@ -12,9 +12,11 @@
 	(add-to-list 'custom-theme-load-path file)))
 (provide 'add-to-custom-themes)
 
-(defun load-package (relative-path &optional package-name)
-  (add-to-load-path (concat (file-name-directory load-file-name) relative-path))
+(defvar emacs-d-default-folder (expand-file-name "~/.emacs.d/"))
+
+(defun load-package (emacs-d-relative-path &optional package-name)
+  (add-to-load-path (concat emacs-d-default-folder emacs-d-relative-path))
   (if (null package-name)
-      (require (intern relative-path))
+      (require (intern (first (split-string emacs-d-relative-path "/"))))
     (require package-name)))
 (provide 'load-package)
