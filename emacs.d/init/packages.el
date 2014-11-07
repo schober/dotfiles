@@ -47,9 +47,6 @@
 (add-to-load-path "~/.emacs.d/multiple-cursors")
 (require 'multiple-cursors)
 
-;; git-emacs
-(load-package "git-emacs")
-
 ;; tuareg
 (add-to-list 'load-path "~/.emacs.d/tuareg-mode")
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
