@@ -221,7 +221,7 @@
   ;("C-] {"         paredit-backward-slurp-sexp)
   ;("C-] }"         paredit-backward-barf-sexp)
   ("M-("           paredit-wrap-round)
-  ("M-["           paredit-wrap-square)
+  ;; ("M-["           paredit-wrap-square)
   ;; ("M-{"           paredit-wrap-curly)
   ("M-K"           paredit-splice-sexp-killing-backward))
 
