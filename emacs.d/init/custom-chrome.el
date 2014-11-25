@@ -78,5 +78,5 @@
                              (powerline-fill face2 (powerline-width rhs))
                              (powerline-render rhs)))))))
 
+;; And run it.
 (powerline-personalized)
-(force-mode-line-update)
