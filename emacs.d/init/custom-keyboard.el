@@ -193,10 +193,19 @@
   ("C-f" isearch-repeat-forward)
   ("C-d" isearch-abort))
 
+ ((c-mode-map c++-mode-map)
+  ("C-d" keyboard-quit))
+
+ (java-mode-map
+  ("C-d" keyboard-quit))
+
  ((emacs-lisp-mode-map lisp-mode-map)
   ("M-f" replace-regexp)
   ("M-k" kill-sexp))
 
+ ;; (flymake-mode-map
+ ;;  ("C-c C-f" flymake-goto-next-error))
+ 
  (((org-mode-map . org-mode-hook))
   ("C-k" kill-whole-line))
 

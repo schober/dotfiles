@@ -30,6 +30,7 @@
 (add-hook 'clojure-mode-hook 'eldoc-mode)
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
+(add-hook 'go-mode-hook 'electric-indent-mode)
 
 ;; Utilities for converting between different capitalization canonicalizations
 (defun camelcase  (s) (mapconcat 'capitalize (split-name s) ""))
