@@ -85,7 +85,7 @@
  '(linum-format "%3d ")
  '(linum-mode (quote dynamic) t)
  '(org-startup-folded nil)
- '(powerline-default-separator (quote brace))
+ '(powerline-default-separator (quote slant))
  '(sentence-end-double-space nil)
  '(sh-learn-basic-offset t)
  '(solarized-broken-srgb nil)
