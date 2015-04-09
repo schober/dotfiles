@@ -10,6 +10,12 @@
 
 (require 'util)
 
+;; When using emacsclient, reload the keybindings
+(defun reload-key-bindings ()
+  (interactive)
+  (load-file "~/.emacs.d/init/custom-keyboard.el"))
+(add-hook 'server-visit-hook 'reload-key-bindings)
+
 ;; Scratch should be empty and start in text-mode
 (setq initial-scratch-message "")
 (setq initial-major-mode 'text-mode)
@@ -89,7 +95,7 @@
  '(sentence-end-double-space nil)
  '(sh-learn-basic-offset t)
  '(solarized-broken-srgb nil)
- '(tab-width 4)
+ '(tab-width 2)
  '(text-mode-hook (quote (turn-on-flyspell text-mode-hook-identify toggle-word-wrap)))
  '(undo-limit 2048576)
  '(vc-follow-symlinks t))

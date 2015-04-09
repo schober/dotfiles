@@ -20,3 +20,13 @@
       (require (intern (first (split-string emacs-d-relative-path "/"))))
     (require package-name)))
 (provide 'load-package)
+
+;; When splitting windows horizontally, balance their width afterwards
+(defadvice split-window-horizontally (after
+                                      rebalance-windows
+                                      activate)
+    (balance-windows))
+(defadvice delete-window (after rebalance-windows activate)
+    (balance-windows))
+(ad-activate 'split-window-horizontally)
+(ad-activate 'delete-window)
