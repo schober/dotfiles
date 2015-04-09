@@ -36,9 +36,12 @@
   ((= emacs-major-version 23)
    (add-to-load-path "~/.emacs.d/themes")
    (add-to-load-path "~/.emacs.d/themes/solarized")
+   (require 'color-theme)
    (require 'color-theme-solarized)
-   (setq theme-changer-mode "color-theme")
-   (change-theme 'color-theme-solarized-light 'color-theme-solarized-light)))
+   (color-theme-solarized-light)
+   ;; (setq theme-changer-mode "color-theme")
+   ;; (change-theme 'color-theme-solarized-light 'color-theme-solarized-light)
+   ))
 
 ;; Autocomplete
 (require 'custom-ac)
@@ -77,3 +80,11 @@
   (define-key slime-repl-mode-map
     (read-kbd-macro paredit-backward-delete-key) nil))
 (add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)
+
+;; Org mode
+(setq org-agenda-files '("~/Google Drive/Agenda"))
+
+;; Ido
+(require 'ido)
+(ido-mode t)
+(setq ido-enable-flex-matching t)

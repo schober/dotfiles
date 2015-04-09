@@ -15,7 +15,7 @@
   ;; Proper windowed systems.
   (('x 'ns 'w32)
    ;; TODO: Some day, fix all the keys...   
-  )
+   )
   
   ;; Terminal systems. What a modern world we live in!
   (t
@@ -53,6 +53,9 @@
    ;; We use C-] as an escape character for a "control" sequence (like meta)
    (global-unset-key (kbd "C-]"))
 
+   ;; Random keys we need to first unbind in order to rebind
+   (global-unset-key (kbd "M-m"))
+
    ;; Workaround for M-[ (which is used as the xterm CSI) - we escape with C-]
    (define-key input-decode-map (kbd "C-] M-[") (kbd "M-["))
 
@@ -70,9 +73,10 @@
        (define-key input-decode-map (read-kbd-macro meta-from-key) (read-kbd-macro meta-to-key))))))
 
 
+
 ;;;; CONTROL remappings ;;;;
 
-  ;; Globally unbind keys that we don't want modes to grab
+;; Globally unbind keys that we don't want modes to grab
 (dolist (globally-unbound-key
          '("0" "1" "2" "3" "4" "5" "6" "7" "8" "9"
            "o" "p" "s" "d" "v" "b" "n"
@@ -90,49 +94,44 @@
 ;; A meaty convenience
 (defmacro my-bind-keys (&rest modes-bindings)
   (flet ((postprocess-key (key)
-           (declare (string key))
-           (case (window-system)
-             ((pc nil)
-              key)
-             (t
-              (replace-regexp-in-string
-               ;; XEmacs et al can correctly interpret, e.g., "C-]". Replace "C-] ]" with "C-]".
-               "-\\][ \t]+" "-"
-               key)))))
-   `(progn
-      ,@(map 'list
-             (lambda (mode-bindings)
-               (let* ((modes      (car mode-bindings))
-                      (modes-list (if (listp modes)
-                                      (if (listp (car modes))
-                                          (cdr modes)
-                                        modes)
-                                    (list modes)))
-                      (hook (when (and (listp modes)
-                                     (listp (car modes)))
-                              (caar modes)))
-                      (bindings   (cdr mode-bindings)))
-                 `(progn
-                    ,@(map 'list
-                           (lambda (mode)
-                             (let* ((mode-map (if (listp mode)
-                                                  (car mode)
-                                                mode))
-                                    (mode-hook (when (listp mode)
-                                                 (cdr mode)))
-                                    (bindings (map 'list
-                                                   (lambda (binding)
-                                                     (let ((key (postprocess-key (car binding)))
-                                                           (fn  (cadr binding)))
-                                                       (if (eq 'global mode-map)
-                                                           `(global-set-key (read-kbd-macro ,key) ',fn)
-                                                         `(define-key ,mode-map (read-kbd-macro ,key) ',fn))))
-                                                   bindings)))
-                               `(,@(if mode-hook
-                                       `(add-hook ',mode-hook (lambda () ,@bindings))
-                                     `(progn ,@bindings)))))
-                           modes-list))))
-             modes-bindings))))
+                          (declare (string key))
+                          (case (window-system)
+                            ((pc nil)
+                             key)
+                            (t
+                             (replace-regexp-in-string
+                              ;; XEmacs et al can correctly interpret, e.g., "C-]". Replace "C-] ]" with "C-]".
+                              "-\\][ \t]+" "-"
+                              key)))))
+    `(progn
+       ,@(map 'list
+              (lambda (mode-bindings)
+                (let* ((modes      (car mode-bindings))
+                       (modes-list (if (listp modes)
+                                       modes
+                                     (list modes)))
+                       (bindings   (cdr mode-bindings)))
+                  `(progn
+                     ,@(map 'list
+                            (lambda (mode)
+                              (let* ((mode-map (if (listp mode)
+                                                   (car mode)
+                                                 mode))
+                                     (mode-hook (when (listp mode)
+                                                  (cdr mode)))
+                                     (bindings (map 'list
+                                                    (lambda (binding)
+                                                      (let ((key (postprocess-key (car binding)))
+                                                            (fn  (cadr binding)))
+                                                        (if (eq 'global mode-map)
+                                                            `(global-set-key (read-kbd-macro ,key) ',fn)
+                                                          `(define-key ,mode-map (read-kbd-macro ,key) ',fn))))
+                                                    bindings)))
+                                `(,@(if mode-hook
+                                        `(add-hook ',mode-hook (lambda () ,@bindings))
+                                      `(progn ,@bindings)))))
+                            modes-list))))
+              modes-bindings))))
 
 (my-bind-keys
  (global
@@ -142,9 +141,10 @@
   ("C-f"       isearch-forward)
   ("M-f"       replace-regexp)
   ("C-M-f"     isearch-forward-regexp)
+  ("M-i"       bookmark-jump)
+  ("M-I"       bookmark-set)
   ("C-g"       goto-line)
   ("C-k"       kill-whole-line)
-  ;; ("M-w"       kill-buffer)
   ("M-W"       confirmationless-save-and-kill-buffer)
   ("C-o"       find-file)
   ("M-o"       find-file-read-only)
@@ -154,15 +154,22 @@
   ("C-x M-x"   top-level)
   ("C-v"       quoted-insert)
   ("C-b"       switch-to-buffer)
-  ("M-b"       ibuffer)
+  ("M-b"       list-buffers)
   ("C-n"       make-frame)
-  ("M-m"       mode-enable)
-  ("M-M"       mode-disable)
-  ("C-M-m"     mode-toggle)
+  ("M-m s"     subword-mode)
+  ("M-m M-s"   subword-mode)
+  ("M-m r"     read-only-mode)
+  ("M-m M-r"   read-only-mode)
+  ("M-m l"     global-linum-mode)
+  ("M-m M-l"   global-linum-mode)
+  ("M-m M-m"   mode-toggle)
+  ("M-m RET"   mode-enable)
+  ("M-m DEL"   mode-enable)
   ("C-,"       customize)
   ("C-1"       delete-other-windows)
   ("C-2"       split-window-below)
-  ("C-3"       split-window-right)
+  ("C-x 3"     split-window-horizontally)
+  ("C-3"       split-window-horizontally)
   ("C-6"       kill-this-buffer)
   ("M-6"       delete-frame)
   ("C-0"       delete-window)
@@ -193,19 +200,13 @@
   ("C-f" isearch-repeat-forward)
   ("C-d" isearch-abort))
 
- ((c-mode-map c++-mode-map)
-  ("C-d" keyboard-quit))
-
- (java-mode-map
-  ("C-d" keyboard-quit))
-
  ((emacs-lisp-mode-map lisp-mode-map)
   ("M-f" replace-regexp)
   ("M-k" kill-sexp))
 
  ;; (flymake-mode-map
  ;;  ("C-c C-f" flymake-goto-next-error))
- 
+
  (((org-mode-map . org-mode-hook))
   ("C-k" kill-whole-line))
 
@@ -225,18 +226,22 @@
   ("C-DEL"         paredit-backward-kill-word)
   ("C-<backspace>" paredit-backward-kill-word)
   ("C-\\"          paredit-convolute-sexp)
-  ;("C-] ["         paredit-forward-barf-sexp)
-  ;("C-] ]"         paredit-forward-slurp-sexp)
-  ;("C-] {"         paredit-backward-slurp-sexp)
-  ;("C-] }"         paredit-backward-barf-sexp)
+  ;; ("C-] ["         paredit-forward-barf-sexp)
+  ;; ("C-] ]"         paredit-forward-slurp-sexp)
+  ;; ("C-] {"         paredit-backward-slurp-sexp)
+  ;; ("C-] }"         paredit-backward-barf-sexp)
   ("M-("           paredit-wrap-round)
   ;; ("M-["           paredit-wrap-square)
   ;; ("M-{"           paredit-wrap-curly)
   ("M-K"           paredit-splice-sexp-killing-backward))
 
-; ((compilation-mode-hook) compilation-mode-map
-;  ("C-M-] ["   switch-to-prev-buffer)
-;  ("C-M-] ]"   switch-to-next-buffer)
+ ;; ((compilation-mode-hook) compilation-mode-map
+ ;;  ("C-M-] ["   switch-to-prev-buffer)
+ ;;  ("C-M-] ]"   switch-to-next-buffer)
+
+ (((ido-common-completion-map . ido-setup-hook))
+  ("C-d" abort-recursive-edit))
+ 
  )
 
 
