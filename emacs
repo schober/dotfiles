@@ -80,10 +80,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ac-ispell-requires 4)
- '(custom-safe-themes (quote ("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
+ '(custom-safe-themes
+   (quote
+    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
  '(default-frame-alist (quote ((width . 134) (height . 40))))
  '(enable-recursive-minibuffers t)
- '(exec-path (quote ("/usr/bin" "/bin" "/usr/sbin" "/sbin" "/usr/local/Cellar/emacs/24.3/libexec/emacs/24.3/x86_64-apple-darwin13.0.0" "/usr/local/bin" "~/bin")))
+ '(exec-path
+   (quote
+    ("/usr/bin" "/bin" "/usr/sbin" "/sbin" "/usr/local/Cellar/emacs/24.3/libexec/emacs/24.3/x86_64-apple-darwin13.0.0" "/usr/local/bin" "~/bin")))
  '(fill-column 100)
  '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
  '(indent-tabs-mode nil)
@@ -96,7 +100,9 @@
  '(sh-learn-basic-offset t)
  '(solarized-broken-srgb nil)
  '(tab-width 2)
- '(text-mode-hook (quote (turn-on-flyspell text-mode-hook-identify toggle-word-wrap)))
+ '(text-mode-hook
+   (quote
+    (turn-on-flyspell text-mode-hook-identify toggle-word-wrap)))
  '(undo-limit 2048576)
  '(vc-follow-symlinks t))
 (custom-set-faces
