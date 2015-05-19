@@ -98,7 +98,8 @@ my %links = (
 
 	gdbinit => '.gdbinit',
 
-        sbclrc => '.sbclrc',
+	sbclrc             => '.sbclrc',
+	'newlisp/init.lsp' => '.init.lsp',
 );
 
 my $contained = (substr $scriptdir, 0, length($home)) eq $home;
