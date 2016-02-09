@@ -573,11 +573,11 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>115 108 924 485 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>472 212 920 666 0 0 1440 878 </string>
+	<string>835 61 836 720 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>400 116 850 666 0 0 1440 878 </string>
+	<string>617 35 850 736 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>735 44 850 666 0 0 1440 878 </string>
+	<string>734 -318 850 666 0 0 1440 878 </string>
 	<key>NeverWarnAboutShortLivedSessions_7B13759C-33B5-49F6-BD21-0B167F4B5AAA</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -1913,6 +1913,10 @@
 	</array>
 	<key>NoSyncNeverRemindPrefsChangesCopy</key>
 	<true/>
+	<key>NoSyncTimeOfLastPromo</key>
+	<real>453436362.73100603</real>
+	<key>NoSyncTimeOfLastPromoDownload</key>
+	<real>466302630.91664797</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -1979,7 +1983,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-11-12T04:09:27Z</date>
+	<date>2015-10-20T04:22:41Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -2019,7 +2023,11 @@
 	<key>WebKitDefaultFontSize</key>
 	<integer>11</integer>
 	<key>WebKitStandardFont</key>
+<<<<<<< HEAD
 	<string>.Lucida Grande UI</string>
+=======
+	<string>.Helvetica Neue DeskInterface</string>
+>>>>>>> iterm2: version update to config
 	<key>WindowNumber</key>
 	<true/>
 	<key>WindowStyle</key>
@@ -2031,6 +2039,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.0.0.20141103</string>
+	<string>2.1.1</string>
 </dict>
 </plist>
