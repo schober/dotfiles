@@ -152,6 +152,7 @@
   ("C-p l"     package-list-packages)
   ("C-x C-x"   execute-extended-command)
   ("C-x M-x"   top-level)
+  ("C-c f"     fill-paragraph)
   ("C-v"       quoted-insert)
   ("C-b"       switch-to-buffer)
   ("M-b"       list-buffers)
