@@ -16,10 +16,6 @@
 [submodule "emacs.d/paredit"]
 	path = emacs.d/paredit
 	url = http://mumble.net/~campbell/git/paredit.git/
-[submodule "emacs.d/powerline"]
-	path = emacs.d/powerline
-	url = https://github.com/milkypostman/powerline.git
-	branch = master
 [submodule "vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
@@ -32,3 +28,10 @@
 [submodule "emacs.d/themes/solarized"]
 	path = emacs.d/themes/solarized
 	url = https://github.com/schober/emacs-color-theme-solarized.git
+[submodule "powerline"]
+	path = powerline
+	url = https://github.com/schober/powerline.git
+[submodule "powerline-schober"]
+	path = emacs.d/powerline
+	url = https://github.com/schober/powerline.git
+	branch = master

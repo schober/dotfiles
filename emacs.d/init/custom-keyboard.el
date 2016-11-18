@@ -46,6 +46,7 @@
    (define-key input-decode-map "\e[1;8D" (kbd "C-M-<left>"))
    ;; Home/End
    (define-key input-decode-map "\e[4~" (kbd "<end>"))
+   (define-key global-map [select] 'end-of-line)
 
    ;; C-\ (which I want to reserve for other uses)
    (global-unset-key (kbd "C-\\"))
@@ -144,6 +145,7 @@
   ("M-i"       bookmark-jump)
   ("M-I"       bookmark-set)
   ("C-g"       goto-line)
+  ("M-l"       goto-line)
   ("C-k"       kill-whole-line)
   ("M-W"       confirmationless-save-and-kill-buffer)
   ("C-o"       find-file)

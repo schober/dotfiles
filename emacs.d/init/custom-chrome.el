@@ -21,15 +21,6 @@
 (add-to-list 'default-frame-alist '(height . 35))
 (add-to-list 'default-frame-alist '(left-fringe . 0))
 
-;; Emacsclient
-
-;; Work around broken solarized colours in emacsclient -t by reloading the theme
-;; whenever a frame is create/deleted and when the server is done editing
-(defun my-reload-solarized (frame)
-  (select-frame frame)
-  (load-theme 'solarized-light))
-(add-hook 'after-make-frame-functions 'my-reload-solarized)
-
 ;; Config powerline
 (require 'powerline)
 (require 'powerline-themes)
@@ -53,7 +44,7 @@
                           (separator-right (intern (format "powerline-%s-%s"
                                                            powerline-default-separator
                                                            (cdr powerline-default-separator-dir))))
-                          (lhs (list (powerline-buffer-id face0 'l)
+                          (lhs (list (powerline-buffer-id face0-bold 'l)
                                      (powerline-raw " " face0 'l)
                                      (funcall separator-left face0 face1)
                                      (powerline-major-mode face1-bold 'l)

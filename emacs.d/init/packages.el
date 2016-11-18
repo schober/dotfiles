@@ -15,33 +15,20 @@
         ("melpa" . "http://melpa.milkbox.net/packages/")))
 (package-initialize)
 
-;; Daytime/nighttime theme changer
-;(add-to-load-path "~/.emacs.d/theme-changer")
-;(setq calendar-location-name "New York, NY") 
-;(setq calendar-latitude 40.67)
-;(setq calendar-longitude -73.94)
-
 ;; powerline
 (add-to-load-path "~/.emacs.d/powerline")
 (require 'powerline)
 
 ;; Load themes, default to solarized
 (cond
-  ((>= emacs-major-version 24)
-   (add-to-custom-themes "~/.emacs.d/themes")
-   (add-to-custom-themes "~/.emacs.d/themes/solarized")
-   ;(require 'theme-changer)
-   ;(change-theme 'solarized-light 'solarized-light)
-   (load-theme 'solarized-light t))
-  ((= emacs-major-version 23)
-   (add-to-load-path "~/.emacs.d/themes")
-   (add-to-load-path "~/.emacs.d/themes/solarized")
-   (require 'color-theme)
-   (require 'color-theme-solarized)
-   (color-theme-solarized-light)
-   ;; (setq theme-changer-mode "color-theme")
-   ;; (change-theme 'color-theme-solarized-light 'color-theme-solarized-light)
-   ))
+ ((>= emacs-major-version 24)
+  (add-to-custom-themes "~/.emacs.d/themes/solarized")
+  (load-theme 'solarized t))
+ ((= emacs-major-version 23)
+  (add-to-load-path "~/.emacs.d/themes/solarized")
+  (require 'color-theme)
+  (require 'color-theme-solarized)
+  (color-theme-solarized-light)))
 
 ;; Autocomplete
 (require 'custom-ac)
