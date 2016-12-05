@@ -4,6 +4,7 @@ answerback.Darwin
 answerback.Linux
 emacs.d/bookmarks
 emacs.d/elpa
+emacs.d/ido.last
 emacs.d/request
 emacs.d/session.*
 emacs.d/tramp
