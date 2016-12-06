@@ -1,6 +1,7 @@
 [submodule "emacs.d/asdf"]
 	path = emacs.d/asdf
 	url = git://common-lisp.net/projects/asdf/asdf.git
+	branch = master
 [submodule "emacs.d/theme-changer"]
 	path = emacs.d/theme-changer
 	url = https://github.com/hadronzoo/theme-changer.git
