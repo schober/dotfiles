@@ -8,11 +8,10 @@
 ;; mode-mode
 (require 'mode-mode)
 
-;; ELPA
+;; Packages
 (setq package-archives
       '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("marmalade" . "http://marmalade-repo.org/packages/")
-        ("melpa" . "http://melpa.milkbox.net/packages/")))
+        ("melpa" . "http://stable.melpa.org/packages/")))
 (package-initialize)
 
 ;; powerline
@@ -30,21 +29,18 @@
   (require 'color-theme-solarized)
   (color-theme-solarized-light)))
 
-;; Autocomplete
-(require 'custom-ac)
+;; ;; multiple-cursors
+;; (add-to-load-path "~/.emacs.d/multiple-cursors")
+;; (require 'multiple-cursors)
 
-;; multiple-cursors
-(add-to-load-path "~/.emacs.d/multiple-cursors")
-(require 'multiple-cursors)
-
-;; tuareg
-(add-to-list 'load-path "~/.emacs.d/tuareg-mode")
-(autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
-(autoload 'camldebug "camldebug" "Run the Caml debugger" t)
-(autoload 'tuareg-imenu-set-imenu "tuareg-imenu" "Configuration of imenu for tuareg" t)
-(add-hook 'tuareg-mode-hook 'tuareg-imenu-set-imenu)
-(add-to-list 'auto-mode-alist '("\\.ml[ily]?$" . tuareg-mode))
-(add-to-list 'auto-mode-alist '("\\.topml$" . tuareg-mode))
+;; ;; tuareg
+;; (add-to-list 'load-path "~/.emacs.d/tuareg-mode")
+;; (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
+;; (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
+;; (autoload 'tuareg-imenu-set-imenu "tuareg-imenu" "Configuration of imenu for tuareg" t)
+;; (add-hook 'tuareg-mode-hook 'tuareg-imenu-set-imenu)
+;; (add-to-list 'auto-mode-alist '("\\.ml[ily]?$" . tuareg-mode))
+;; (add-to-list 'auto-mode-alist '("\\.topml$" . tuareg-mode))
 
 ;; paredit mode
 (load-package "paredit")

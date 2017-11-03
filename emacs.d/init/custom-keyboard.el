@@ -155,7 +155,7 @@
   ("C-x C-x"   execute-extended-command)
   ("C-x M-x"   top-level)
   ("C-c f"     fill-paragraph)
-  ("C-v"       quoted-insert)
+  ;; ("C-v"       quoted-insert)  ;; causes a lot of editing grief
   ("C-b"       switch-to-buffer)
   ("M-b"       list-buffers)
   ("C-n"       make-frame)

@@ -1,27 +1,12 @@
 (provide 'custom-chrome)
 
 ;; Remove unneeded chrome
-
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
-;; Use hl-mode
-
+;; Highlight the current line (emphasizes the cursor)
 (global-hl-line-mode 1)
 
-;; XEmacs
-
-(setq-default cursor-type 'bar)
-
-(set-frame-font "-unknown-Inconsolata-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")
-(set-default-font "-unknown-Inconsolata-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")
-
-(set-face-attribute 'default nil :height 145)
-(add-to-list 'default-frame-alist '(width . 104))
-(add-to-list 'default-frame-alist '(height . 35))
-(add-to-list 'default-frame-alist '(left-fringe . 0))
-
-;; Config powerline
 (require 'powerline)
 (require 'powerline-themes)
 
@@ -35,10 +20,10 @@
                           (face0 (if active 'powerline-active0 'powerline-inactive0))
                           (face0-bold (if active 'powerline-active0-bold 'powerline-inactive0-bold))
                           ;; problems: powerline-active1 powerline-active2 powerline-inactive1-warning
-                          (face1 (if active 'powerline-inactive1 'powerline-inactive1))                     ;; wtf
+                          (face1 (if active 'powerline-inactive1 'powerline-inactive1)) ;; wtf
                           (face1-bold (if active 'powerline-active1-bold 'powerline-inactive1-bold))
-                          (face1-warning (if active 'powerline-active1-warning 'powerline-inactive1))       ;; wtf
-                          (face2 (if active 'powerline-inactive2 'powerline-inactive2))                     ;; wtf
+                          (face1-warning (if active 'powerline-active1-warning 'powerline-inactive1)) ;; wtf
+                          (face2 (if active 'powerline-inactive2 'powerline-inactive2)) ;; wtf
                           (separator-left (intern (format "powerline-%s-left"
                                                           powerline-default-separator)))
                           (separator-right (intern (format "powerline-%s-%s"
@@ -65,6 +50,19 @@
                      (concat (powerline-render lhs)
                              (powerline-fill face2 (powerline-width rhs))
                              (powerline-render rhs)))))))
-
-;; And run it.
 (powerline-personalized)
+
+;; XEmacs-specific Configuration
+(when window-system
+  ;; Default geometry
+  (set-frame-size (selected-frame) 138 38)
+
+  ;; No left fringe
+  (add-to-list 'initial-frame-alist '(left-fringe . 0))
+
+  ;; Bar cursor, not block
+  (setq-default cursor-type 'bar)
+
+  ;; Default font: Inconsolata
+  (set-face-attribute 'default nil :font
+                      "-unknown-Inconsolata-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1"))
