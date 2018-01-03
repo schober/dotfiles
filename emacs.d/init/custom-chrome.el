@@ -4,6 +4,9 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
+;; Enable line numbers in every buffer
+(global-linum-mode 1)
+
 ;; Highlight the current line (emphasizes the cursor)
 (global-hl-line-mode 1)
 

@@ -121,3 +121,5 @@
  '(powerline-active2 ((t (:inherit powerline-inactive2)))))
 
 (redraw-display)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
