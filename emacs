@@ -1,15 +1,15 @@
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
-#! /bin/emacs
 ;; Emacs config file (~/.emacs)
+
+;; Initialize packages
+(setq load-prefer-newer t)
+(package-initialize)
+(require 'auto-compile)
+(auto-compile-on-load-mode)
+(auto-compile-on-save-mode)
 
 ;; Encapsulated setup
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/init"))
+;; (require 'benchmark-init)  ;; Uncomment to profile startup.
 (require 'packages)
 (require 'custom-keyboard)
 (require 'code-config)
@@ -102,6 +102,9 @@
  '(linum-format "%3d ")
  '(linum-mode (quote dynamic) t)
  '(org-startup-folded nil)
+ '(package-selected-packages
+   (quote
+    (auto-compile string-inflection benchmark-init epl magit json-mode idle-highlight)))
  '(powerline-default-separator (quote slant))
  '(sentence-end-double-space nil)
  '(sh-learn-basic-offset t)
@@ -120,6 +123,7 @@
  '(powerline-active1 ((t (:inherit powerline-inactive1))))
  '(powerline-active2 ((t (:inherit powerline-inactive2)))))
 
-(redraw-display)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+(redraw-display)
