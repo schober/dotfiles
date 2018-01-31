@@ -7,10 +7,10 @@
 (custom-set-variables
  '(ac-ispell-requires 4))
 
-(eval-after-load "auto-complete"
-  '(progn
-     (ac-ispell-setup)
-     (require 'go-autocomplete)))
+;; (eval-after-load "auto-complete"
+;;   '(progn
+;;      (ac-ispell-setup)
+;;      (require 'go-autocomplete)))
 
 (defun my/enable-ac-ispell ()
   (add-to-list 'ac-sources 'ac-source-ispell))
