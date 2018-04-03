@@ -67,5 +67,5 @@
   (setq-default cursor-type 'bar)
 
   ;; Default font: Inconsolata
-  (set-face-attribute 'default nil :font
-                      "-unknown-Inconsolata-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1"))
+  ;; (set-face-attribute 'default nil :font "Inconsolata")
+  )
