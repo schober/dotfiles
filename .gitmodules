@@ -10,9 +10,6 @@
 [submodule "emacs.d/themes/solarized"]
 	path = emacs.d/themes/solarized
 	url = https://github.com/schober/emacs-color-theme-solarized.git
-[submodule "powerline"]
-	path = powerline
-	url = https://github.com/schober/powerline.git
 [submodule "powerline-schober"]
 	path = emacs.d/powerline
 	url = https://github.com/schober/powerline.git
