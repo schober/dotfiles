@@ -1,7 +1,6 @@
 [submodule "emacs.d/asdf"]
 	path = emacs.d/asdf
 	url = https://gitlab.common-lisp.net/asdf/asdf.git
-	branch = master
 [submodule "gnome-terminal/solarized"]
 	path = gnome-terminal/solarized
 	url = https://github.com/sigurdga/gnome-terminal-colors-solarized.git
@@ -17,12 +16,9 @@
 [submodule "powerline-schober"]
 	path = emacs.d/powerline
 	url = https://github.com/schober/powerline.git
-	branch = master
 [submodule "powerline-fonts"]
 	path = powerline-fonts
 	url = https://github.com/powerline/fonts.git
-	branch = master
 [submodule "oh-my-tmux"]
 	path = oh-my-tmux
 	url = https://github.com/gpakosz/.tmux.git
-	branch = master
