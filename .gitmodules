@@ -40,3 +40,7 @@
 	path = powerline-fonts
 	url = https://github.com/powerline/fonts.git
 	branch = master
+[submodule "oh-my-tmux"]
+	path = oh-my-tmux
+	url = https://github.com/gpakosz/.tmux.git
+	branch = master

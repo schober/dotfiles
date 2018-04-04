@@ -38,7 +38,9 @@ unless(eval {symlink('', ''); 1;}) {
 
 my %links = (
 	screenrc    => '.screenrc',
-	'tmux.conf' => '.tmux.conf',
+#	'tmux.conf' => '.tmux.conf',
+	'oh-my-tmux/.tmux.conf' => '.tmux.conf',
+	'oh-my-tmux-local' => '.tmux.conf.local',
 	ackrc       => '.ackrc',
 	toprc       => '.toprc',
 	dir_colors  => '.dir_colors',
