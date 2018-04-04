@@ -2,30 +2,12 @@
 	path = emacs.d/asdf
 	url = https://gitlab.common-lisp.net/asdf/asdf.git
 	branch = master
-[submodule "emacs.d/theme-changer"]
-	path = emacs.d/theme-changer
-	url = https://github.com/hadronzoo/theme-changer.git
-[submodule "vim/bundle/vim-pathogen"]
-	path = vim/bundle/vim-pathogen
-	url = https://github.com/tpope/vim-pathogen.git
-[submodule "emacs.d/highlight-parentheses"]
-	path = emacs.d/highlight-parentheses
-	url = https://github.com/nschum/highlight-parentheses.el.git
 [submodule "gnome-terminal/solarized"]
 	path = gnome-terminal/solarized
 	url = https://github.com/sigurdga/gnome-terminal-colors-solarized.git
 [submodule "emacs.d/paredit"]
 	path = emacs.d/paredit
 	url = http://mumble.net/~campbell/git/paredit.git/
-[submodule "vim/bundle/vim-airline"]
-	path = vim/bundle/vim-airline
-	url = https://github.com/bling/vim-airline.git
-[submodule "emacs.d/multiple-cursors"]
-	path = emacs.d/multiple-cursors
-	url = https://github.com/magnars/multiple-cursors.el.git
-[submodule "terminator-solarized"]
-	path = terminator-solarized
-	url = https://github.com/ghuntley/terminator-solarized.git
 [submodule "emacs.d/themes/solarized"]
 	path = emacs.d/themes/solarized
 	url = https://github.com/schober/emacs-color-theme-solarized.git

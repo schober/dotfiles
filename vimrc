@@ -122,9 +122,6 @@ else
    set nomodeline
 endif
 
-" ---- vim-pathogen ----
-execute pathogen#infect()
-
 " Shamelessly stolen from Ciaran McCreesh <ciaranm@ciaranm.org>
 if has('eval')
    fun! LoadColorScheme(schemes)
@@ -395,9 +392,3 @@ endif
 
 set t_RV=
 
-let g:airline_powerline_fonts = 1
-
-if !exists('g:airline_symbols')
-   let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
