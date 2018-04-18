@@ -7,7 +7,7 @@
   ((>= emacs-major-version 24)
    (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
    (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/solarized")
-   (load-theme 'solarized-dark nil))
+   (load-theme 'solarized-dark t))
   ((= emacs-major-version 23)
    (add-to-list 'load-path "~/.emacs.d/themes/")
    (require 'color-theme-solarized)
@@ -24,8 +24,6 @@
   `((".*" ,emacs-tmp-dir t)))
 (setq auto-save-list-file-prefix
   emacs-tmp-dir)
-
-;; Re-open previously open files (fuck yeah transparent persistence)
 
 ;; Set up slime
 (when (file-exists-p "~/.slime")
