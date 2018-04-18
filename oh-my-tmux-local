@@ -268,3 +268,5 @@ bind C-a send-prefix
 
 # We like <prefix>-l 
 bind l last-window
+
+set -g default-terminal "xterm-256color"
