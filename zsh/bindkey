@@ -6,6 +6,8 @@ bindkey ' ' magic-space
 
 bindkey -M emacs '\ee' edit-command-line
 
+bindkey \^U backward-kill-line
+
 case $TERM in
 	screen*|xterm*|putty*)
 		bindkey '\e[H' beginning-of-line
