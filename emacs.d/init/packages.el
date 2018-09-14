@@ -9,9 +9,9 @@
 (require 'mode-mode)
 
 ;; Packages
-(setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("melpa" . "http://stable.melpa.org/packages/")))
+(dolist (archive '(("melpa-stable" . "https://stable.melpa.org/packages/")
+                   ("melpa-latest" . "https://melpa.org/packages/")))
+  (add-to-list 'package-archives archive t))
 (package-initialize)
 
 ;; powerline
@@ -28,19 +28,6 @@
   (require 'color-theme)
   (require 'color-theme-solarized)
   (color-theme-solarized-light)))
-
-;; ;; multiple-cursors
-;; (add-to-load-path "~/.emacs.d/multiple-cursors")
-;; (require 'multiple-cursors)
-
-;; ;; tuareg
-;; (add-to-list 'load-path "~/.emacs.d/tuareg-mode")
-;; (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
-;; (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
-;; (autoload 'tuareg-imenu-set-imenu "tuareg-imenu" "Configuration of imenu for tuareg" t)
-;; (add-hook 'tuareg-mode-hook 'tuareg-imenu-set-imenu)
-;; (add-to-list 'auto-mode-alist '("\\.ml[ily]?$" . tuareg-mode))
-;; (add-to-list 'auto-mode-alist '("\\.topml$" . tuareg-mode))
 
 ;; paredit mode
 (load-package "paredit")
