@@ -4,6 +4,9 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
+;; No useless splash screen
+(setq inhibit-splash-screen t)
+
 ;; Enable line numbers in every buffer
 (global-linum-mode 1)
 
@@ -69,3 +72,9 @@
   ;; Default font: Inconsolata
   ;; (set-face-attribute 'default nil :font "Inconsolata")
   )
+
+;; When looking at buffers with ido, hide all *system-buffers* except *scratch*.
+(defvar ido-ignore-buffer-whitelist '("*scratch*"))
+(defun ido-ignore-buffer-most-stars (name)
+  (and (string-match-p "^*" name)
+       (not (member name ido-ignore-buffer-whitelist))))

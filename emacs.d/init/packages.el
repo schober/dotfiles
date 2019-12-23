@@ -9,8 +9,7 @@
 (require 'mode-mode)
 
 ;; Packages
-(dolist (archive '(("melpa-stable" . "https://stable.melpa.org/packages/")
-                   ("melpa-latest" . "https://melpa.org/packages/")))
+(dolist (archive '(("melpa-stable" . "https://stable.melpa.org/packages/")))
   (add-to-list 'package-archives archive t))
 (package-initialize)
 
@@ -37,6 +36,9 @@
                 lisp-mode-hook lisp-interaction-mode-hook scheme-mode-hook
                 slime-repl-mode-hook))
   (add-hook mode #'enable-paredit-mode))
+;; Fix deletion while selecting
+(put 'paredit-backward-delete 'delete-selection 'supersede)
+(put 'paredit-forward-delete 'delete-selection 'supersede)
 
 ;; Set up slime
 (when (file-exists-p "~/.slime")
@@ -52,9 +54,14 @@
 (add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)
 
 ;; Org mode
-(setq org-agenda-files '("~/Google Drive/Agenda"))
+(require 'org)
 
 ;; Ido
 (require 'ido)
 (ido-mode t)
 (setq ido-enable-flex-matching t)
+
+;; UI and Keyboard customization
+(require 'custom-editing)
+(require 'custom-keyboard)
+(require 'custom-chrome)

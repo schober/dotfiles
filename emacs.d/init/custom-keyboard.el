@@ -94,16 +94,16 @@
 
 ;; A meaty convenience
 (defmacro my-bind-keys (&rest modes-bindings)
-  (flet ((postprocess-key (key)
-                          (declare (string key))
-                          (case (window-system)
-                            ((pc nil)
-                             key)
-                            (t
-                             (replace-regexp-in-string
-                              ;; XEmacs et al can correctly interpret, e.g., "C-]". Replace "C-] ]" with "C-]".
-                              "-\\][ \t]+" "-"
-                              key)))))
+  (cl-flet ((postprocess-key (key)
+                             (declare (string key))
+                             (case (window-system)
+                               ((pc nil)
+                                key)
+                               (t
+                                (replace-regexp-in-string
+                                 ;; XEmacs et al can correctly interpret, e.g., "C-]". Replace "C-] ]" with "C-]".
+                                 "-\\][ \t]+" "-"
+                                 key)))))
     `(progn
        ,@(map 'list
               (lambda (mode-bindings)
@@ -139,6 +139,8 @@
   ("C-s"       save-buffer)
   ("M-s"       set-visited-file-name)
   ("C-d"       keyboard-quit)
+  ("M-d"       ediff-buffers)
+  ("M-D"       ediff-files)
   ("C-f"       isearch-forward)
   ("M-f"       replace-regexp)
   ("C-M-f"     isearch-forward-regexp)
@@ -159,8 +161,12 @@
   ("C-b"       switch-to-buffer)
   ("M-b"       list-buffers)
   ("C-n"       make-frame)
-  ("M-m s"     subword-mode)
-  ("M-m M-s"   subword-mode)
+  ("M-m s"     global-subword-mode)
+  ("M-m M-s"   global-subword-mode)
+  ("M-m f"     auto-fill-mode)
+  ("M-m M-f"   auto-fill-mode)
+  ("M-m l"     global-linum-mode)
+  ("M-m M-l"   global-linum-mode)
   ("M-m r"     read-only-mode)
   ("M-m M-r"   read-only-mode)
   ("M-m l"     global-linum-mode)
@@ -211,7 +217,20 @@
  ;;  ("C-c C-f" flymake-goto-next-error))
 
  (((org-mode-map . org-mode-hook))
-  ("C-k" kill-whole-line))
+  ("C-t"        org-todo)
+  ("C-k"        kill-whole-line)
+  ("C-c i"      org-clock-in)
+  ("C-c o"      org-clock-out)
+  ("C-c l"      org-store-link)
+  ("C-c s"      org-archive-subtree)
+  ("C-<up>"     org-backward-element)
+  ("C-<down>"   org-forward-element)
+  ("M-<up>"     beginning-of-buffer)
+  ("M-<down>"   end-of-buffer)
+  ("C-S-<up>"   org-metaup)
+  ("C-S-<down>" org-metadown)
+  ("C-S-<left>" org-metaleft)
+  ("C-S-<right>" org-metaright))
 
  ((emacs-lisp-mode-map lisp-mode-map paredit-mode-map)
   ("C-<left>"      backward-word)
@@ -253,3 +272,15 @@
 (setq mac-command-modifier 'control)
 (setq mac-option-modifier 'meta)
 (setq mac-right-command-modifier 'meta)
+
+
+;;;; Emacsclient ;;;;
+
+;; When using emacsclient, reload the keybindings
+(defun reload-key-bindings ()
+  "Reload custom key bindings."
+  (interactive)
+  (load-file "~/.emacs.d/init/custom-keyboard.el"))
+(add-hook 'server-visit-hook 'reload-key-bindings)
+
+(provide 'custom-keyboard)
