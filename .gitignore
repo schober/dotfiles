@@ -2,6 +2,7 @@
 *_local
 answerback.Darwin
 answerback.Linux
+emacs.d/.org-id-locations
 emacs.d/bookmarks
 emacs.d/elpa
 emacs.d/ido.last
