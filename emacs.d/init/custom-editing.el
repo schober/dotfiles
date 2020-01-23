@@ -1,8 +1,7 @@
 ;; Customization of editing behavior
 (provide 'custom-editing)
 
-;; Scratch should be empty and start in text-mode
-(setq initial-scratch-message "")
+;; Start in text-mode, not fundamental-mode
 (setq initial-major-mode 'text-mode)
 
 ;; We much prefer whole line kills

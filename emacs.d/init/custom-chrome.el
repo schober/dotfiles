@@ -7,6 +7,9 @@
 ;; No useless splash screen
 (setq inhibit-splash-screen t)
 
+;; Scratch buffer starts empty
+(setq initial-scratch-message "")
+
 ;; Enable line numbers in every buffer
 (global-linum-mode 1)
 
