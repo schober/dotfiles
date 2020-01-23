@@ -37,6 +37,11 @@
 ;; Screw yes-or-no-p: we only need a single char to answer
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; I want to be able to reload emacs's configs
+(defun reload-emacs ()
+  (interactive)
+  (load-file "~/.emacs"))
+
 ;; Put backup buffers somewhere NOT annoying
 (defconst emacs-tmp-dir
   (format "/%s/%s-%s/" temporary-file-directory "emacs" (user-uid)))

@@ -9,11 +9,6 @@
 (require 'packages)
 
 
-;; I want to be able to reload emacs's configs
-(defun reload-emacs ()
-  (interactive)
-  (load-file "~/.emacs"))
-
 ;; Emacs-managed config
 
 (defface powerline-inactive0 '((t (:inherit default))) "")
