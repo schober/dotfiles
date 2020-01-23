@@ -1,17 +1,26 @@
 ;; Imported packages and systems
 (provide 'packages)
 
+;; Use melpa-stable only. melpa-latest has too many versions and elpa has
+;; nothing.
+(dolist (archive '(("melpa-stable" . "https://stable.melpa.org/packages/")))
+  (add-to-list 'package-archives archive t))
+(package-initialize)
+
+;; auto-compile (ensures all .el files are compiled when loaded/saved)
+(unless (package-installed-p 'auto-compile)
+  (package-refresh-contents)
+  (package-install 'auto-compile))
+(require 'auto-compile)
+(auto-compile-on-load-mode)
+(auto-compile-on-save-mode)
+
 ;; Helpers for the rest of this method
 (require 'util)
 (require 'package)
 
 ;; mode-mode
 (require 'mode-mode)
-
-;; Packages
-(dolist (archive '(("melpa-stable" . "https://stable.melpa.org/packages/")))
-  (add-to-list 'package-archives archive t))
-(package-initialize)
 
 ;; powerline
 (add-to-load-path "~/.emacs.d/powerline")

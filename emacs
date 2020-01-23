@@ -5,9 +5,6 @@
 
 (setq load-prefer-newer t)
 (package-initialize)
-(require 'auto-compile)
-(auto-compile-on-load-mode)
-(auto-compile-on-save-mode)
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/init"))
 (require 'packages)
 
