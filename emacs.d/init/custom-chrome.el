@@ -11,7 +11,7 @@
 (setq initial-scratch-message "")
 
 ;; Enable line numbers in every buffer
-(global-linum-mode 1)
+(global-display-line-numbers-mode 1)
 
 ;; Highlight the current line (emphasizes the cursor)
 (global-hl-line-mode 1)
