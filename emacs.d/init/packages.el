@@ -5,7 +5,6 @@
 ;; nothing.
 (dolist (archive '(("melpa-stable" . "https://stable.melpa.org/packages/")))
   (add-to-list 'package-archives archive t))
-(package-initialize)
 
 ;; auto-compile (ensures all .el files are compiled when loaded/saved)
 (unless (package-installed-p 'auto-compile)
