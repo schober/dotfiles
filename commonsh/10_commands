@@ -137,7 +137,7 @@ make-alias () {
 }
 
 print-hex () {
-    echo $@ | tr ' ' '\n' | while read hex; do; printf \\x$hex; done
+    echo $@ | tr ' ' '\n' | while read hex; do printf \\x$hex; done
 }
 
 command -v time >/dev/null 2>&1 && alias time='command time'

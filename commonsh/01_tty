@@ -1,4 +1,4 @@
 #! /bin/sh
 
 # Disable XOFF (C-s) and XON (C-q)
-stty -ixon
+[ -t 0 ] && stty -ixon
