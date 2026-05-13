@@ -9,7 +9,7 @@ bindkey -M emacs '\ee' edit-command-line
 bindkey \^U backward-kill-line
 
 case $TERM in
-	screen*|xterm*|putty*)
+	screen*|tmux*|xterm*|putty*)
 		bindkey '\e[H' beginning-of-line
 		bindkey '\e[F' end-of-line
 		bindkey '\eOH' beginning-of-line
